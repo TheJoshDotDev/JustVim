@@ -7,6 +7,7 @@ return {
 	"tpope/vim-sleuth",
 
 	-- UTILITY
+	"christoomey/vim-tmux-navigator",
 	{
 		"szw/vim-maximizer",
 		keys = {
