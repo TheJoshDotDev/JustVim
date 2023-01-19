@@ -34,12 +34,11 @@ return {
 		options = {
 			theme = vim.g.colorscheme,
 			component_separators = "|",
-			section_separators = { left = "", right = "" },
 			globalstatus = true,
 		},
 		sections = {
 			lualine_a = {
-				{ "mode", separator = { left = "" }, right_padding = 2 },
+				{ "mode", right_padding = 2 },
 			},
 			lualine_b = { "filename", "branch" },
 			lualine_c = {
@@ -59,13 +58,17 @@ return {
 			lualine_x = { "fileformat" },
 			lualine_y = { "filetype", "progress" },
 			lualine_z = {
-				{ "location", separator = { right = "" }, left_padding = 2 },
+				{ "location", left_padding = 2 },
 			},
 		},
 		inactive_sections = {
 			lualine_a = { "filename" },
-			lualine_b = {},
-			lualine_c = {},
+			lualine_b = {
+				{ "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+			},
+			lualine_c = {
+				{ require("auto-session-library").current_session_name },
+			},
 			lualine_x = {},
 			lualine_y = {},
 			lualine_z = { "location" },
