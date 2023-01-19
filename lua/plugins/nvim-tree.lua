@@ -5,10 +5,14 @@ return {
 	lazy = false,
 	keys = {
 		{ "<leader>ne", "<cmd>NvimTreeToggle<cr>", desc = "Explorer Nvim Tree Toggle (cwd)", remap = true },
+		{ "<leader>nr", "<cmd>NvimTreeRefresh<cr>", desc = "Refresh Nvim Tree Toggle (cwd)", remap = true },
 	},
 	opts = {
 		-- change folder arrow icons
 		view = {
+			width = 40,
+			hide_root_folder = true,
+			side = "left",
 			relativenumber = true,
 			mappings = {
 				list = {
