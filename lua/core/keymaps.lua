@@ -23,12 +23,12 @@ keymap.set("n", "<leader>+", "<C-a>") -- increment
 keymap.set("n", "<leader>-", "<C-x>") -- decrement
 
 -- window management
-keymap.set("n", "<leader>wv", "<C-w>v") -- split window vertically
-keymap.set("n", "<leader>wh", "<C-w>s") -- split window horizontally
-keymap.set("n", "<leader>we", "<C-w>=") -- make split windows equal width & height
-keymap.set("n", "<leader>wx", "<C-w>c") -- close current split window
+keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
+keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
+keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
+keymap.set("n", "<leader>sx", "<C-w>c") -- close current split window
 
-keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<CR>", { desc = "Open new tab" })
-keymap.set("n", "<leader><tab>x", "<cmd>tabclose<CR>", { desc = "Close current tab" })
-keymap.set("n", "<leader><tab>n", "<cmd>tabn<CR>", { desc = "Go to next tab" })
-keymap.set("n", "<leader><tab>p", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
+keymap.set("n", "<leader>tt", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
+keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
+keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })

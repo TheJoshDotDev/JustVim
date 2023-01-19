@@ -10,7 +10,7 @@ return {
 	{
 		"szw/vim-maximizer",
 		keys = {
-			{ "<leader>wm", "<cmd>MaximizerToggle<cr>", desc = "Toggle maximize current window" },
+			{ "<leader>sm", "<cmd>MaximizerToggle<cr>", desc = "Toggle maximize current window" },
 		},
 	},
 

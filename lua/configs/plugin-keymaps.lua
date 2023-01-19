@@ -32,6 +32,12 @@ M.telescope_keymaps = function()
 		"<cmd>Telescope git_status<cr>",
 		{ desc = "list current changes per file with diff preview ['gs' for git status]" }
 	)
+	keymap.set(
+		"n",
+		"<leader>gl",
+		"<cmd>Telescope git_stash<cr>",
+		{ desc = "list current changes per file with diff preview ['gs' for git status]" }
+	)
 
 	-- restart lsp server (not on youtube nvim video)
 	keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary

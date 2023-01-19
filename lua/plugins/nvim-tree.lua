@@ -4,7 +4,7 @@ return {
 	"nvim-tree/nvim-tree.lua",
 	lazy = false,
 	keys = {
-		{ "<leader>e", "<leader>fe", desc = "Explorer Nvim Tree Toggle (cwd)", remap = true },
+		{ "<leader>ne", "<cmd>NvimTreeToggle<cr>", desc = "Explorer Nvim Tree Toggle (cwd)", remap = true },
 	},
 	opts = {
 		-- change folder arrow icons
