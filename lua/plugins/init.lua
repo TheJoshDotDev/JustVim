@@ -3,15 +3,10 @@ return {
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
 
-	-- "gc" to comment visual regions/lines
-	"numToStr/Comment.nvim",
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
 
-
-
-
-  -- UTILITY
+	-- UTILITY
 	{
 		"szw/vim-maximizer",
 		keys = {
@@ -19,18 +14,18 @@ return {
 		},
 	},
 
-  -- STATUS
+	-- STATUS
 	"SmiteshP/nvim-navic",
 
-  -- DOCUMENTATION
+	-- DOCUMENTATION
 	"folke/which-key.nvim",
 
-	-- COSMETICS	
+	-- COSMETICS
 	-- vscode like icons in autocompletion
 	"onsails/lspkind.nvim",
 	-- Add vscode like icons to nvim
 	"nvim-tree/nvim-web-devicons",
-  -- Animated indent line
+	-- Animated indent line
 	{
 		"echasnovski/mini.indentscope",
 		version = false,
