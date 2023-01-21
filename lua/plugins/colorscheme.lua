@@ -1,18 +1,30 @@
 return {
-	"EdenEast/nightfox.nvim",
+	"catppuccin/nvim",
 	priority = 60,
 	config = function()
-		local colorscheme = "nightfox"
-		local ok, nightfox = pcall(require, colorscheme)
+		local colorscheme = "catppuccin"
+		local ok, catpuccin = pcall(require, colorscheme)
 		if not ok then
 			return
 		end
-		nightfox.setup({
-			options = {
-				transparent = true,
-				styles = {
-					comments = "bold",
-				},
+		catpuccin.setup({
+			flavour = "mocha",
+			transparent_background = true,
+			styles = {
+				keywords = { "bold" },
+				properties = { "bold" },
+				comments = { "italic" },
+			},
+			custom_highlights = function(colors)
+				return {
+					Comment = { fg = colors.flamingo },
+				}
+			end,
+			integrations = {
+				nvimtree = false,
+			},
+			indent_blankline = {
+				colored_indent_levels = true,
 			},
 		})
 
