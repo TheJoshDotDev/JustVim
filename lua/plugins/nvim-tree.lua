@@ -19,7 +19,7 @@ return {
 			width = 40,
 			hide_root_folder = true,
 			side = "left",
-			line_numbers = true,
+			number = true,
 			relativenumber = true,
 			mappings = {
 				list = {
