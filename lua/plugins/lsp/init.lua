@@ -18,6 +18,8 @@ return {
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lua",
+			-- vscode like icons in autocompletion
+			"onsails/lspkind.nvim",
 
 			-- Snippets
 			"L3MON4D3/LuaSnip",
