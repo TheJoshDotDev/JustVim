@@ -2,11 +2,6 @@ return {
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
 
-	{
-		"danymat/neogen",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = true,
-	},
 
 	{
 		"m4xshen/autoclose.nvim",

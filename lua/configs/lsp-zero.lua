@@ -11,7 +11,6 @@ M.configure = function()
 		"sumneko_lua",
 	})
 
-	-- Fix Undefined global 'vim'
 	lsp.configure("sumneko_lua", {
 		settings = {
 			Lua = {
@@ -31,8 +30,6 @@ M.configure = function()
 		["<C-Space>"] = cmp.mapping.complete(),
 	})
 
-	-- disable completion with tab
-	-- this helps with copilot setup
 	cmp_mappings["<Tab>"] = nil
 	cmp_mappings["<S-Tab>"] = nil
 	local lspkind = require("lspkind")
@@ -40,9 +37,9 @@ M.configure = function()
 		mapping = cmp_mappings,
 		formatting = {
 			format = lspkind.cmp_format({
-				mode = "symbol_text", -- show only symbol annotations
-				maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-				ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+				mode = "symbol_text",
+				maxwidth = 50,
+				ellipsis_char = "...",
 			}),
 		},
 	})
@@ -70,10 +67,18 @@ M.configure = function()
 		vim.keymap.set("n", "K", function()
 			vim.lsp.buf.hover()
 		end, opts)
-		-- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-		-- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-		-- vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-		-- vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+		vim.keymap.set("n", "<leader>vws", function()
+			vim.lsp.buf.workspace_symbol()
+		end, opts)
+		vim.keymap.set("n", "<leader>vd", function()
+			vim.diagnostic.open_float()
+		end, opts)
+		vim.keymap.set("n", "[d", function()
+			vim.diagnostic.goto_next()
+		end, opts)
+		vim.keymap.set("n", "]d", function()
+			vim.diagnostic.goto_prev()
+		end, opts)
 		vim.keymap.set("n", "<leader>ca", function()
 			vim.lsp.buf.code_action()
 		end, opts)

@@ -1,5 +1,3 @@
--- Todo: update vim with quick picks
--- Enable telescope fzf native, if installed
 return {
 	{
 		"nvim-telescope/telescope.nvim",
@@ -10,28 +8,9 @@ return {
 			-- view lazy plugins with telescope
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
 		},
-		keys = {
-			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "[S]earch [F]iles" },
-			-- git
-			{ "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
-			{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
-			-- search
-			{ "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
-			{ "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
-			{ "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-			{ "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
-			{ "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-			{ "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
-			{ "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
-			{ "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
-			{ "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
-			{ "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-			{ "<leader>st", "<cmd>Telescope builtin<cr>", desc = "Telescope" },
-			{ "<leader>sl", "<cmd>Telescope lazy<cr>", desc = "Telescope Lazy" },
-		},
 		opts = {
 			defaults = {
+				file_ignore_patterns = { "node_modules", ".git", ".cache" },
 				prompt_prefix = " ",
 				selection_caret = "﬌ ",
 				layout_strategy = "horizontal",

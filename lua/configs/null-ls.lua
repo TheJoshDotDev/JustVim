@@ -7,6 +7,7 @@ M.configure = function()
 
 	local formatters = null_ls.builtins.formatting
 	local diagnostics = null_ls.builtins.diagnostics
+	local completion = null_ls.builtins.completion
 
 	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -25,20 +26,16 @@ M.configure = function()
 			end
 		end,
 
-		sources = {
-			formatters.prettier.with({
-				configure = function(util)
-					return util.root_has_file(".prettierrc.json")
-				end,
-			}),
-			formatters.stylua,
-		},
+		sources = {},
 	})
+
 	require("mason-null-ls").setup({
-		ensure_installed = {
-			"prettier", -- ts/js formatter
-			"stylua", -- lua formatter
-		},
+		-- ensure_installed = {
+		-- 	"prettier",
+		-- 	"cspell",
+		-- 	"stylua"
+		-- },
+		ensure_installed = nil,
 		automatic_installtion = true,
 		automatic_setup = false,
 	})
