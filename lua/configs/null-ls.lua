@@ -11,6 +11,7 @@ M.configure = function()
 
 	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+
 	null_ls.setup({
 		on_attach = function(client, bufnr)
 			null_opts.on_attach(client, bufnr)
@@ -28,14 +29,13 @@ M.configure = function()
 
 		sources = {},
 	})
-
+	
 	require("mason-null-ls").setup({
-		-- ensure_installed = {
-		-- 	"prettier",
-		-- 	"cspell",
-		-- 	"stylua"
-		-- },
-		ensure_installed = nil,
+		ensure_installed = {
+			"prettier",
+			"cspell",
+			"stylua"
+		},
 		automatic_installtion = true,
 		automatic_setup = false,
 	})
