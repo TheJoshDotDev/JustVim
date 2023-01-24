@@ -12,7 +12,6 @@ return {
 				sidebars = "transparent"
 			}
 		})
-
 		vim.g.colorscheme = colorscheme
 		vim.cmd.colorscheme(colorscheme)
 	end,
