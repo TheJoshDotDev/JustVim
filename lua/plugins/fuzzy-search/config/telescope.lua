@@ -1,3 +1,4 @@
+local keymaps = require("plugins.fuzzy-search.config.keymaps")
 local M = {}
 
 M.setup = function(_, opts)
@@ -10,7 +11,7 @@ M.setup = function(_, opts)
 	telescope.setup(opts)
 	require("telescope").load_extension("fzf")
 	require("telescope").load_extension("lazy")
-	require("configs.plugin-keymaps").telescope_keymaps()
+	keymaps.telescope_keymaps()
 end
 
 return M
