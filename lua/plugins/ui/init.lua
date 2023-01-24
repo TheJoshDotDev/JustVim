@@ -1,3 +1,4 @@
+local lualine_opts = require("plugins.ui.config.opts").lualine_opts
 return {
 	{
 		"akinsho/bufferline.nvim",
@@ -10,4 +11,11 @@ return {
 		},
 	},
 	"SmiteshP/nvim-navic",
+	{
+		"nvim-lualine/lualine.nvim", -- Fancier statusline
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		opts = lualine_opts,
+	}
 }

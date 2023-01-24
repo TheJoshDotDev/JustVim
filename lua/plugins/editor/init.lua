@@ -1,3 +1,10 @@
+local symbol_outline_opts = require("plugins.editor.config.opts").symbol_outline_opts
+local indent_blankline_opts = require("plugins.editor.config.opts").indent_blankline_opts
+local indentscope_opts = require("plugins.editor.config.opts").indentscope_opts
+local gitsigns_opts = require("plugins.editor.config.opts").gitsigns_opts
+
+local indentscope_config = require("plugins.editor.config.indentscope")
+
 return {
 	"christoomey/vim-tmux-navigator",
 	{
@@ -16,51 +23,22 @@ return {
 		keys = {
 			{ "<leader>so", "<cmd>SymbolsOutline<cr>", "Open file outline" },
 		},
-		opts = require("configs.symbols-outline"),
+		opts = symbol_outline_opts,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim", -- Add indentation guides even on blank lines
 		event = "BufReadPre",
-		opts = {
-			-- char = "┊",
-			char = "│",
-			show_trailing_blankline_indent = true,
-		},
+		opts = indent_blankline_opts,
 	},
 	{
 		"echasnovski/mini.indentscope",
 		version = false, -- wait till new 0.7.0 release to put it back on semver
 		event = "BufReadPre",
-		opts = {
-			symbol = "│",
-			options = { try_as_border = true },
-		},
-		config = function(_, opts)
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = { "nvimtree" },
-				callback = function()
-					vim.b.miniindentscope_disable = true
-				end,
-			})
-			require("mini.indentscope").setup(opts)
-		end,
+		opts = indentscope_opts,
+		config = indentscope_config.setup,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = { text = "+" },
-				change = { text = "┊" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-			},
-			current_line_blame = true,
-			current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
-			current_line_blame_opts = {
-				delay = 200,
-				ignore_whitespace = true,
-			},
-		},
+		opts = gitsigns_opts,
 	}
 }
