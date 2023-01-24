@@ -1,12 +1,8 @@
 local M = {}
 M.setup = function()
 	local null_ls = require("null-ls")
-	local lsp = require("lsp-zero")
-	local null_opts = lsp.build_options("null-ls", {})
-
 	local formatters = null_ls.builtins.formatting
 	local diagnostics = null_ls.builtins.diagnostics
-	local completion = null_ls.builtins.completion
 
 	null_ls.setup({
 		sources = {
@@ -30,7 +26,11 @@ M.setup = function()
 	})
 
 	require("mason-null-ls").setup({
-		ensure_installed = nil,
+		ensure_installed = {
+			"eslint_d",
+			"stylua",
+			"prettier"
+		},
 		automatic_installtion = true,
 		automatic_setup = false,
 	})

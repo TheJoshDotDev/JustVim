@@ -1,4 +1,5 @@
-local lsp_zero_conf = require("configs.lsp-zero")
+local lsp_zero_conf = require("plugins.lsp.config.lsp-zero")
+local null_ls_conf = require("plugins.lsp.config.null-ls")
 
 return {
 	{
@@ -25,6 +26,9 @@ return {
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 		},
-		config = lsp_zero_conf.configure,
+		config = function ()
+			lsp_zero_conf.setup()
+			null_ls_conf.setup()
+		end,
 	},
 }
