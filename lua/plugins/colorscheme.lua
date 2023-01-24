@@ -6,7 +6,8 @@ return {
 		local tokyonight = require(colorscheme)
 
 		tokyonight.setup({
-			style = "moon"
+			style = "moon",
+			transparent = true
 		})
 
 		vim.g.colorscheme = colorscheme
