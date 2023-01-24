@@ -1,5 +1,3 @@
-local nvim_tree_config = require("configs.nvim-tree")
-
 return {
 	"nvim-tree/nvim-tree.lua",
 	lazy = false,
@@ -26,7 +24,7 @@ return {
 					{
 						key = "ga",
 						action = "Add or remove file from git staging",
-						action_cb = nvim_tree_config.git_add,
+						-- action_cb = nvim_tree_config.git_add,
 					},
 				},
 			},
