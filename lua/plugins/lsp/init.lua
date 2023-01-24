@@ -28,7 +28,6 @@ return {
 		},
 		config = function ()
 			lsp_zero_conf.setup()
-			null_ls_conf.setup()
 		end,
 	},
 }

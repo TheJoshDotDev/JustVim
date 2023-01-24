@@ -4,25 +4,40 @@ M.setup = function()
 	local formatters = null_ls.builtins.formatting
 	local diagnostics = null_ls.builtins.diagnostics
 
+	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 	null_ls.setup({
 		sources = {
-			formatters.stylua.with({
-				condition = function(utils)
-					return utils.root_has_file(".stylua.toml")
-				end,
-			}),
+			formatters.stylua,
 			formatters.prettier.with({
 				condition = function(utils)
-					return utils.root_has_file(".prettierrc")
+					return utils.root_has_file(".prettierrc.json")
 				end,
 			}),
 			-- promises performance benefits
 			diagnostics.eslint_d.with({
 				condition = function(utils)
-					return utils.root_has_file(".eslintrc.js")
+					return utils.root_has_file(".eslintrc.json")
 				end,
 			}),
 		},
+		-- on_attach = function(current_client, bufnr)
+		-- 	if current_client.supports_method("textDocument/formatting") then
+		-- 		vim.api.nvim_create_autocmd("BufWritePre", {
+		-- 			group = augroup,
+		-- 			buffer = bufnr,
+		-- 			callback = function()
+		-- 				vim.lsp.buf.format({
+		-- 					filter = function(client)
+		-- 						--  only use null-ls for formatting instead of lsp server
+		-- 						return client.name == "null-ls"
+		-- 					end,
+		-- 					bufnr = bufnr,
+		-- 				})
+		-- 			end,
+		-- 		})
+		-- 	end
+		-- end,
 	})
 
 	require("mason-null-ls").setup({
