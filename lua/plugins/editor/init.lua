@@ -1,7 +1,6 @@
 local symbol_outline_opts = require("plugins.editor.config.opts").symbol_outline_opts
 local indent_blankline_opts = require("plugins.editor.config.opts").indent_blankline_opts
 local indentscope_opts = require("plugins.editor.config.opts").indentscope_opts
-local gitsigns_opts = require("plugins.editor.config.opts").gitsigns_opts
 
 local indentscope_config = require("plugins.editor.config.indentscope")
 
@@ -37,8 +36,4 @@ return {
 		opts = indentscope_opts,
 		config = indentscope_config.setup,
 	},
-	{
-		"lewis6991/gitsigns.nvim",
-		opts = gitsigns_opts,
-	}
 }

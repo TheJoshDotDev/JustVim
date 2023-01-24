@@ -7,7 +7,10 @@ return {
 
 		tokyonight.setup({
 			style = "moon",
-			transparent = true
+			transparent = true,
+			styles = {
+				sidebars = "transparent"
+			}
 		})
 
 		vim.g.colorscheme = colorscheme
