@@ -14,7 +14,6 @@ M.setup = function()
 					return utils.root_has_file(".prettierrc.json")
 				end,
 			}),
-			-- promises performance benefits
 			diagnostics.eslint_d.with({
 				condition = function(utils)
 					return utils.root_has_file(".eslintrc.json")
