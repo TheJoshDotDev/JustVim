@@ -29,13 +29,7 @@ M.nvimtree_opts = {
 					arrow_open = "", -- arrow when folder is open
 				},
 				git = {
-					unstaged = "",
-					staged = "",
-					unmerged = "",
-					renamed = "",
 					untracked = "",
-					deleted = "",
-					ignored = "",
 				},
 			},
 		},
@@ -49,6 +43,9 @@ M.nvimtree_opts = {
 				enable = false,
 			},
 		},
+	},
+	filters = {
+		dotfiles = true,
 	},
 }
 
