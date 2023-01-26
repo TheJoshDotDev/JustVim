@@ -10,6 +10,8 @@ opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
+opt.scrolloff = 8 -- keep 8 lines above and below cursor when scrolling
+
 -- line wrapping
 opt.wrap = false -- disable line wrapping
 
