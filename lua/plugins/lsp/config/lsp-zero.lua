@@ -8,7 +8,9 @@ M.setup = function()
 
   lsp.ensure_installed({
     "tsserver",
+    "eslint",
     "sumneko_lua",
+    "gopls"
   })
 
   lsp.configure("sumneko_lua", {
@@ -50,17 +52,18 @@ M.setup = function()
       require("nvim-navic").attach(client, bufnr)
     end
 
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format({ async = true })
-        end,
-      })
-    end
+    -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    -- if client.supports_method("textDocument/formatting") then
+    --   vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    --   vim.api.nvim_create_autocmd("BufWritePre", {
+    --     group = augroup,
+    --     buffer = bufnr,
+    --     callback = function()
+				-- 	print("Formatting...")
+    --       vim.lsp.buf.format({ async = true })
+    --     end,
+    --   })
+    -- end
 
     vim.keymap.set("n", "gd", function()
       vim.lsp.buf.definition()
