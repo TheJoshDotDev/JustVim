@@ -7,6 +7,18 @@ local indentscope_config = require("plugins.editor.config.indentscope")
 return {
 	"christoomey/vim-tmux-navigator",
 	{
+		"folke/zen-mode.nvim",
+		keys = {
+			{ "<leader>zz", "<cmd>ZenMode<cr>", desc = "Toggle Zen Mode" },
+		},
+		opts = {
+			window = {
+				backdrop = 1,
+				width = 220,
+			}
+		}
+	},
+	{
 		"szw/vim-maximizer",
 		keys = {
 			{ "<leader>wm", "<cmd>MaximizerToggle<cr>", desc = "Toggle maximize current window" },
