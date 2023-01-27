@@ -6,7 +6,7 @@ return {
 		local tokyonight = require(colorscheme)
 
 		tokyonight.setup({
-			style = "moon",
+			style = "night",
 			transparent = true,
 			styles = {
 				sidebars = "transparent"
