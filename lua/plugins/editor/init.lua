@@ -6,6 +6,15 @@ local indentscope_config = require("plugins.editor.config.indentscope")
 
 return {
 	"christoomey/vim-tmux-navigator",
+	"mbbill/undotree",
+	{
+		"folke/todo-comments.nvim",
+		keys = {
+			{ "<leader>tc", "<cmd>TodoTelescope<cr>", desc = "Search for TODOs" },
+		},
+		dependencies = "nvim-lua/plenary.nvim",
+		opts = {}
+	},
 	{
 		"folke/zen-mode.nvim",
 		keys = {

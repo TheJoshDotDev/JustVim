@@ -15,5 +15,12 @@ M.telescope_opts = {
 			},
 		},
 	},
+	extensions = {
+		recent_files = {
+			stat_files = false,
+			only_cwd =  true,
+			show_current_files = true,
+		}
+	}
 }
 return M

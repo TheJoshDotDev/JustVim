@@ -11,6 +11,7 @@ M.setup = function(_, opts)
 	telescope.setup(opts)
 	require("telescope").load_extension("fzf")
 	require("telescope").load_extension("lazy")
+	require("telescope").load_extension("recent_files")
 	keymaps.telescope_keymaps()
 end
 

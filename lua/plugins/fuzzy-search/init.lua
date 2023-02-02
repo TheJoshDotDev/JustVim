@@ -7,12 +7,13 @@ return {
 		branch = "0.1.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"tsakirist/telescope-lazy.nvim",
+			"smartpde/telescope-recent-files",
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build = "make",
 				cond = vim.fn.executable("make") == 1
 			},
+			"tsakirist/telescope-lazy.nvim",
 		},
 		opts = telescope_opts,
 		config = telescope_setup.setup,

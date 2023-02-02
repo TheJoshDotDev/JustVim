@@ -1,16 +1,18 @@
 return {
-	"folke/tokyonight.nvim",
+	"catppuccin/nvim",
+	name = "catppuccin",
 	priority = 60,
 	config = function()
-		local colorscheme = "tokyonight"
-		local tokyonight = require(colorscheme)
+		local colorscheme = "catppuccin"
+		local catppuccin = require(colorscheme)
 
-		tokyonight.setup({
-			style = "night",
-			transparent = true,
+		catppuccin.setup({
+			flavour = "mocha",
+			transparent_background = true,
 			styles = {
-				sidebars = "transparent"
-			}
+        comments = { "italic" },
+        conditionals = { "italic" },
+			},
 		})
 		vim.g.colorscheme = colorscheme
 		vim.cmd.colorscheme(colorscheme)
