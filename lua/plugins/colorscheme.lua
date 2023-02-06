@@ -7,11 +7,10 @@ return {
 		local catppuccin = require(colorscheme)
 
 		catppuccin.setup({
-			flavour = "mocha",
-			transparent_background = true,
+			flavour = "frappe",
 			styles = {
-        comments = { "italic" },
-        conditionals = { "italic" },
+				comments = { "italic" },
+				conditionals = { "italic" },
 			},
 		})
 		vim.g.colorscheme = colorscheme
