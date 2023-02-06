@@ -4,6 +4,7 @@ M.nvimtree_opts = {
 	-- change folder arrow icons
 	view = {
 		width = 40,
+		disable_netrw = true,
 		hide_root_folder = true,
 		side = "left",
 		number = true,
@@ -39,14 +40,15 @@ M.nvimtree_opts = {
 	},
 	actions = {
 		open_file = {
+			quit_on_open = true,
 			window_picker = {
 				enable = false,
 			},
 		},
-	},
-	filters = {
-		dotfiles = true,
-	},
+	}
+	-- filters = {
+	-- 	dotfiles = true,
+	-- },
 }
 
 return M
