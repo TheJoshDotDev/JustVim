@@ -6,6 +6,7 @@ local file_auto_open = function(api)
 		vim.cmd("edit " .. file.fname)
 	end)
 end
+
 M.setup = function(_, opts)
 
 	local nvimtree_ok, nvimtree = pcall(require, "nvim-tree")

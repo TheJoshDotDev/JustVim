@@ -4,7 +4,6 @@ M.nvimtree_opts = {
 	-- change folder arrow icons
 	view = {
 		width = 40,
-		disable_netrw = true,
 		hide_root_folder = true,
 		side = "left",
 		number = true,

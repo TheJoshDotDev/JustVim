@@ -1,19 +1,18 @@
 return {
-	"catppuccin/nvim",
-	name = "catppuccin",
-	priority = 60,
-	config = function()
-		local colorscheme = "catppuccin"
-		local catppuccin = require(colorscheme)
+		"navarasu/onedark.nvim",
+		name = "onedark",
+		priority = 60,
+		config = function()
+			local colorscheme = "onedark"
+			local onedark = require(colorscheme)
 
-		catppuccin.setup({
-			flavour = "frappe",
-			styles = {
-				comments = { "italic" },
-				conditionals = { "italic" },
-			},
-		})
-		vim.g.colorscheme = colorscheme
-		vim.cmd.colorscheme(colorscheme)
-	end,
+			onedark.setup({
+					style = 'cool',
+					lualine = {
+							transparent = true
+					}
+			})
+
+			onedark.load()
+		end,
 }
