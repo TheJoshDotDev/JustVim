@@ -2,9 +2,9 @@ local M = {}
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local lsp_buffer_keymaps = require("plugins.lsp.config.keymaps").lsp_buffer_keymaps
 
-							local no_format_servers = {
-								"tsserver",
-							}
+local no_format_servers = {
+		"tsserver",
+}
 
 -- Adds an auto command to format the current buffer automatically on save
 ---@param current_client table
