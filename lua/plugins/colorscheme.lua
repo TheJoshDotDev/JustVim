@@ -7,7 +7,7 @@ return {
 			local onedark = require(colorscheme)
 
 			onedark.setup({
-					style = 'cool',
+					style = 'warmer',
 					lualine = {
 							transparent = true
 					}
@@ -16,3 +16,4 @@ return {
 			onedark.load()
 		end,
 }
+

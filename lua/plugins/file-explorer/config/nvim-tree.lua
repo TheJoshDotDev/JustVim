@@ -8,7 +8,6 @@ local file_auto_open = function(api)
 end
 
 M.setup = function(_, opts)
-
 	local nvimtree_ok, nvimtree = pcall(require, "nvim-tree")
 	if not nvimtree_ok then
 		return
