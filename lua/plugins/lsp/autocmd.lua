@@ -1,6 +1,9 @@
-local M = {}
+local utils = require("utils")
+-- TODOL: refactor keymaps implementation
+local buffer_keys = require("plugins.lsp.keys")
+
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-local lsp_buffer_keymaps = require("plugins.lsp.config.keymaps").lsp_buffer_keymaps
+local M = {}
 
 -- Adds an auto command to format the current buffer automatically on save
 ---@param current_client table
@@ -11,9 +14,9 @@ M.autofmt_on_save = function(current_client, bufnr)
 		return
 	end
 
-	lsp_buffer_keymaps(bufnr)
+	utils.create_keymaps(buffer_keys, bufnr)
 	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-	vim.api.nvim_create_autocmd("BufWritePost", {
+	vim.api.nvim_create_autocmd("BufWritePre", {
 		callback = function()
 			vim.lsp.buf.format({
 				async = true,

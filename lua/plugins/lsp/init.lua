@@ -1,5 +1,4 @@
-local lsp_zero_conf = require("plugins.lsp.config.lsp-zero")
-local null_ls_conf = require("plugins.lsp.config.null-ls")
+local lsp_zero_config = require("plugins.lsp.lsp-zero.config")
 
 return {
 	{
@@ -26,9 +25,7 @@ return {
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 		},
-		config = function()
-			lsp_zero_conf.setup()
-		end,
+		config = lsp_zero_config,
 	},
 	{
 		"akinsho/flutter-tools.nvim",

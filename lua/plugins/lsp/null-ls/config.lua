@@ -1,13 +1,14 @@
-local M = {}
-local lsp_util = require("plugins.lsp.config.util")
+local lsp_autocmds = require("plugins.lsp.autocmd")
+local servers = require("plugins.lsp.null-ls.const").servers
 
-M.setup = function()
+return function()
 	local null_ls = require("null-ls")
 	local formatters = null_ls.builtins.formatting
 	local diagnostics = null_ls.builtins.diagnostics
 
+	-- TODO: Refactor to use server list constant
 	null_ls.setup({
-		on_attach = lsp_util.autofmt_on_save,
+		on_attach = lsp_autocmds.autofmt_on_save,
 		sources = {
 			diagnostics.eslint_d.with({
 				condition = function(utils)
@@ -20,11 +21,7 @@ M.setup = function()
 	})
 
 	require("mason-null-ls").setup({
-		ensure_installed = {
-			"eslint_d",
-			"prettierd",
-			"stylua",
-		},
+		ensure_installed = servers,
 		automatic_installtion = true,
 		automatic_setup = false,
 	})
@@ -33,5 +30,3 @@ M.setup = function()
 		virtual_text = false,
 	})
 end
-
-return M
