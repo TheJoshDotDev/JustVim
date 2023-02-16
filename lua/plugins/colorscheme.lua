@@ -1,19 +1,19 @@
 return {
-		"navarasu/onedark.nvim",
-		name = "onedark",
-		priority = 60,
-		config = function()
-			local colorscheme = "onedark"
-			local onedark = require(colorscheme)
+	"folke/tokyonight.nvim",
+	name = "tokyonight",
+	priority = 60,
+	config = function()
+		local colorscheme = "tokyonight"
+		local tokyonight = require(colorscheme)
 
-			onedark.setup({
-					style = 'warmer',
-					lualine = {
-							transparent = true
-					}
-			})
+		tokyonight.setup({
+			style = "night",
+			styles = {
+				floats = "normal",
+			},
+		})
 
-			onedark.load()
-		end,
+		vim.cmd("colorscheme " .. colorscheme)
+		vim.g.colorscheme = colorscheme
+	end,
 }
-

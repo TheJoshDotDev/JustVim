@@ -1,11 +1,10 @@
-local M = {}
-
-M.lualine_opts = {
+local config = {
 	options = {
-		theme = vim.g.colorscheme,
-		component_separators = "|",
+		-- Disable sections and component separators
 		globalstatus = true,
+		theme = vim.g.colorscheme,
 	},
+
 	sections = {
 		lualine_a = {
 			{ "mode", right_padding = 2 },
@@ -41,10 +40,18 @@ M.lualine_opts = {
 		},
 		lualine_x = {},
 		lualine_y = {},
-		lualine_z = { "location" },
+		lualine_z = {
+			{ "location", left_padding = 2 },
+		},
 	},
 	tabline = {},
 	extensions = { "nvim-tree" },
 }
 
-return M
+return function()
+	local status_ok, lualine = pcall(require, "lualine")
+	if not status_ok then
+		return
+	end
+	lualine.setup(config)
+end

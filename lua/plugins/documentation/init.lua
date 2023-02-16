@@ -1,3 +1,4 @@
+local neogen_config = require("plugins.documentation.neogen.config")
 return {
 	{
 		"numToStr/Comment.nvim",
@@ -6,7 +7,6 @@ return {
 	{
 		"danymat/neogen",
 		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = true,
+		config = neogen_config,
 	},
-	"folke/which-key.nvim",
 }
