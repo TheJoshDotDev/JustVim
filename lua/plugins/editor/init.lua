@@ -1,61 +1,41 @@
-local symbol_outline_opts = require("plugins.editor.config.opts").symbol_outline_opts
-local indent_blankline_opts = require("plugins.editor.config.opts").indent_blankline_opts
-local indentscope_opts = require("plugins.editor.config.opts").indentscope_opts
-
-local indentscope_config = require("plugins.editor.config.indentscope")
+local symbol_outline_opts = require("plugins.editor.opts.symbols-outline")
+local indent_blankline_opts = require("plugins.editor.opts.blankline")
 
 return {
-		"christoomey/vim-tmux-navigator",
-		"mbbill/undotree",
-		{
-				"folke/todo-comments.nvim",
-				lazy = false,
-				keys = {
-						{ "<leader>tc", "<cmd>TodoTelescope<cr>", desc = "Search for TODOs" },
-				},
-				dependencies = "nvim-lua/plenary.nvim",
-				opts = {}
+	{ "christoomey/vim-tmux-navigator" },
+	{ "mbbill/undotree" },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		opts = indent_blankline,
+	},
+	{
+		"folke/todo-comments.nvim",
+		lazy = false,
+		keys = {
+			{ "<leader>tc", "<cmd>TodoTelescope<cr>", desc = "Search for TODOs" },
 		},
-		{
-				"folke/zen-mode.nvim",
-				keys = {
-						{ "<leader>zz", "<cmd>ZenMode<cr>", desc = "Toggle Zen Mode" },
-				},
-				opts = {
-						window = {
-								backdrop = 1,
-								width = 220,
-						}
-				}
+		dependencies = "nvim-lua/plenary.nvim",
+		opts = {
+			highlight = {
+				pattern = [[.*<(KEYWORDS)\s*]],
+			},
 		},
-		{
-				"szw/vim-maximizer",
-				keys = {
-						{ "<leader>wm", "<cmd>MaximizerToggle<cr>", desc = "Toggle maximize current window" },
-				},
+	},
+	{
+		"szw/vim-maximizer",
+		keys = {
+			{ "<leader>sm", "<cmd>MaximizerToggle<cr>", desc = "Toggle maximize current window" },
 		},
-		"tpope/vim-sleuth",
-		{
-				"m4xshen/autoclose.nvim",
-				opts = {},
+	},
+	{
+		"m4xshen/autoclose.nvim",
+		opts = {},
+	},
+	{
+		"simrat39/symbols-outline.nvim",
+		keys = {
+			{ "<leader>so", "<cmd>SymbolsOutline<cr>", "Open file outline" },
 		},
-		{
-				"simrat39/symbols-outline.nvim",
-				keys = {
-						{ "<leader>so", "<cmd>SymbolsOutline<cr>", "Open file outline" },
-				},
-				opts = symbol_outline_opts,
-		},
-		{
-				"lukas-reineke/indent-blankline.nvim", -- Add indentation guides even on blank lines
-				event = "BufReadPre",
-				opts = indent_blankline_opts,
-		},
-		-- {
-		-- 		"echasnovski/mini.indentscope",
-		-- 		version = false, -- wait till new 0.7.0 release to put it back on semver
-		-- 		event = "BufReadPre",
-		-- 		opts = indentscope_opts,
-		-- 		config = indentscope_config.setup,
-		-- },
+		opts = symbol_outline_opts,
+	},
 }

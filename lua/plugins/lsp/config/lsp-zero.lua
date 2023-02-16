@@ -6,11 +6,11 @@ M.setup = function()
 	local lsp = require("lsp-zero")
 
 	lsp.preset("recommended")
-
 	lsp.ensure_installed({
 		"tsserver",
 		"sumneko_lua",
 		"gopls",
+		"marksman",
 	})
 
 	lsp.configure("sumneko_lua", {

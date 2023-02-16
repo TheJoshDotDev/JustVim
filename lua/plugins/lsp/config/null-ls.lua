@@ -22,7 +22,7 @@ M.setup = function()
 	require("mason-null-ls").setup({
 		ensure_installed = {
 			"eslint_d",
-			"prettier",
+			"prettierd",
 			"stylua",
 		},
 		automatic_installtion = true,

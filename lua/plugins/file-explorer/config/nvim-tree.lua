@@ -7,6 +7,16 @@ local file_auto_open = function(api)
 	end)
 end
 
+local auto_close_tree = function(api)
+	local augroup = vim.api.nvim_create_augroup("NvimTreeBuffer", {})
+	vim.api.nvim_clear_autocmds({ group = augroup })
+	vim.api.nvim_create_autocmd("VimLeave", {
+		callback = function()
+			api.tree.close()
+		end,
+	})
+end
+
 M.setup = function(_, opts)
 	local nvimtree_ok, nvimtree = pcall(require, "nvim-tree")
 	if not nvimtree_ok then
@@ -19,8 +29,9 @@ M.setup = function(_, opts)
 	end
 
 	nvimtree.setup(opts)
-	file_auto_open(nvimtree_api)
 	keymaps.nvimtree_keys()
+	file_auto_open(nvimtree_api)
+	auto_close_tree(nvimtree_api)
 end
 
 return M

@@ -26,8 +26,15 @@ return {
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 		},
-		config = function ()
+		config = function()
 			lsp_zero_conf.setup()
 		end,
+	},
+	{
+		"akinsho/flutter-tools.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		opts = {},
 	},
 }

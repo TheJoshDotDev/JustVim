@@ -1,33 +1,4 @@
-local M = {}
-
-M.gitsigns_opts = {
-	signs = {
-		add = { text = "+" },
-		change = { text = "┊" },
-		delete = { text = "_" },
-		topdelete = { text = "‾" },
-		changedelete = { text = "~" },
-	},
-	current_line_blame = true,
-	current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
-	current_line_blame_opts = {
-		delay = 200,
-		ignore_whitespace = true,
-	},
-}
-
-M.indentscope_opts = {
-	symbol = "│",
-	options = { try_as_border = true },
-}
-
-M.indent_blankline_opts = {
-	char = "│",
-	show_end_of_line = true,
-	space_char_blankline = " ",
-}
-
-M.symbol_outline_opts = {
+return {
 	highlight_hovered_item = true,
 	show_guides = true,
 	auto_preview = false,
@@ -88,5 +59,3 @@ M.symbol_outline_opts = {
 		TypeParameter = { icon = "𝙏", hl = "@parameter" },
 	},
 }
-
-return M
