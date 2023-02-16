@@ -1,41 +1,43 @@
-local symbol_outline_opts = require("plugins.editor.opts.symbols-outline")
-local indent_blankline_opts = require("plugins.editor.opts.blankline")
+-- OTPIONS
+local symbols_outline_opts = require("plugins.editor.symbols-outline.opts")
+local indent_blankline_opts = require("plugins.editor.blankline.opts")
+
+-- KEYS
+local todo_comments_keys = require("plugins.editor.todo-comments.keys")
+local vim_maximizer_keys = require("plugins.editor.vim-maximizer.keys")
+local symbols_outline_keys = require("plugins.editor.symbols-outline.keys")
 
 return {
-	{ "christoomey/vim-tmux-navigator" },
-	{ "mbbill/undotree" },
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		opts = indent_blankline,
-	},
-	{
-		"folke/todo-comments.nvim",
-		lazy = false,
-		keys = {
-			{ "<leader>tc", "<cmd>TodoTelescope<cr>", desc = "Search for TODOs" },
-		},
-		dependencies = "nvim-lua/plenary.nvim",
-		opts = {
-			highlight = {
-				pattern = [[.*<(KEYWORDS)\s*]],
-			},
-		},
-	},
-	{
-		"szw/vim-maximizer",
-		keys = {
-			{ "<leader>sm", "<cmd>MaximizerToggle<cr>", desc = "Toggle maximize current window" },
-		},
-	},
-	{
-		"m4xshen/autoclose.nvim",
-		opts = {},
+		opts = indent_blankline_opts,
 	},
 	{
 		"simrat39/symbols-outline.nvim",
-		keys = {
-			{ "<leader>so", "<cmd>SymbolsOutline<cr>", "Open file outline" },
+		keys = symbols_outline_keys,
+		opts = symbols_outline_opts,
+	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
 		},
-		opts = symbol_outline_opts,
+		keys = todo_comments_keys,
+		config = true,
+	},
+	{
+		"szw/vim-maximizer",
+		keys = vim_maximizer_keys,
+	},
+	{
+		"m4xshen/autoclose.nvim",
+		config = true,
+	},
+	{
+		"mbbill/undotree",
+		cmd = "UndotreeToggle",
+	},
+	{
+		"christoomey/vim-tmux-navigator",
 	},
 }

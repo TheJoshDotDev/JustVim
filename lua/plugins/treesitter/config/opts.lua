@@ -19,7 +19,7 @@ M.nvimtreesitter_opts = {
 		"dockerfile",
 		"gitignore",
 		"jsdoc",
-    "dart"
+		"dart",
 	},
 
 	auto_install = true,
