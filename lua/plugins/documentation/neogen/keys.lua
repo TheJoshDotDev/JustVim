@@ -1,4 +1,3 @@
-return function()
-	local opts = { remap = false }
-	vim.keymap.set("n", "<leader>ng", ":Neogen<cr>", opts)
-end
+return {
+	{ "<leader>ng", "<cmd>Neogen<cr>", desc = "Generate code documentation" },
+}
