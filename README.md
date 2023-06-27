@@ -1,4 +1,4 @@
-# 💤 JOSH VIM
+# 🫣 JoshVim (I literally took lazyvim and disabled stuff)
 
 Config was created by customizing [LazyVim](https://github.com/LazyVim/LazyVim).
 
