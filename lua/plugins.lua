@@ -126,6 +126,26 @@ return {
       dashboard.section.header.val = vim.split(logo, "\n")
     end,
   },
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true,
+    keys = {
+      { "<leader>ng", "<cmd>Neogen<cr>" },
+      { "<leader>nf", "<cmd>Neogen func<cr>" },
+      { "<leader>nc", "<cmd>Neogen class<cr>" },
+      { "<leader>nt", "<cmd>Neogen type<cr>" },
+    },
+  },
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      window = {
+        backdrop = 0.95,
+        width = 140,
+      },
+    },
+  },
 
   -- Diabaled plugins
   {

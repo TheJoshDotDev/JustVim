@@ -18,6 +18,11 @@ require("lazy").setup({
     lazy = false,
     version = false,
   },
+  ui = {
+    size = { width = 0.4, height = 0.8 },
+    wrap = true,
+    border = "rounded",
+  },
   install = { colorscheme = { "tokyonight", "habamax" } },
   checker = { enabled = true },
   performance = {
