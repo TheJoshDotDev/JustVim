@@ -1,4 +1,5 @@
 local icons = require("lazyvim.config").icons
+local lualine_confgs = require("pluginConfigs.lualine")
 
 local logo = [[
 ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -86,30 +87,7 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
-    opts = {
-      tabline = {
-        lualine_c = {
-          {
-            "filename",
-            symbols = {
-              modified = " ●",
-              readonly = " ",
-            },
-          },
-        },
-        lualine_y = { "tabs" },
-      },
-      sections = {
-        lualine_a = {
-          {
-            "mode",
-            fmt = function(s)
-              return " " .. s
-            end,
-          },
-        },
-      },
-    },
+    opts = lualine_confgs.opts,
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -139,10 +117,16 @@ return {
   },
   {
     "folke/zen-mode.nvim",
+    keys = {
+      { "<leader>zz", "<cmd>ZenMode<cr>" },
+    },
     opts = {
       window = {
         backdrop = 0.95,
         width = 140,
+        options = {
+          cursorline = true,
+        },
       },
     },
   },
@@ -170,10 +154,6 @@ return {
   },
   {
     "echasnovski/mini.indentscope",
-    enabled = false,
-  },
-  {
-    "SmiteshP/nvim-navic",
     enabled = false,
   },
   {
