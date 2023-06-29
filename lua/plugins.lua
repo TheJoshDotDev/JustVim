@@ -1,76 +1,14 @@
-local icons = require("lazyvim.config").icons
-local lualine_confgs = require("pluginConfigs.lualine")
-
-local logo = [[
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-─────────██████─██████████████─██████████████─██████──██████────────████████████───██████████████─██████──██████─
-─────────██░░██─██░░░░░░░░░░██─██░░░░░░░░░░██─██░░██──██░░██────────██░░░░░░░░████─██░░░░░░░░░░██─██░░██──██░░██─
-─────────██░░██─██░░██████░░██─██░░██████████─██░░██──██░░██────────██░░████░░░░██─██░░██████████─██░░██──██░░██─
-─────────██░░██─██░░██──██░░██─██░░██─────────██░░██──██░░██────────██░░██──██░░██─██░░██─────────██░░██──██░░██─
-─────────██░░██─██░░██──██░░██─██░░██████████─██░░██████░░██────────██░░██──██░░██─██░░██████████─██░░██──██░░██─
-─────────██░░██─██░░██──██░░██─██░░░░░░░░░░██─██░░░░░░░░░░██────────██░░██──██░░██─██░░░░░░░░░░██─██░░██──██░░██─
-─██████──██░░██─██░░██──██░░██─██████████░░██─██░░██████░░██────────██░░██──██░░██─██░░██████████─██░░██──██░░██─
-─██░░██──██░░██─██░░██──██░░██─────────██░░██─██░░██──██░░██────────██░░██──██░░██─██░░██─────────██░░░░██░░░░██─
-─██░░██████░░██─██░░██████░░██─██████████░░██─██░░██──██░░██─██████─██░░████░░░░██─██░░██████████─████░░░░░░████─
-─██░░░░░░░░░░██─██░░░░░░░░░░██─██░░░░░░░░░░██─██░░██──██░░██─██░░██─██░░░░░░░░████─██░░░░░░░░░░██───████░░████───
-─██████████████─██████████████─██████████████─██████──██████─██████─████████████───██████████████─────██████─────
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-]]
+local lualine_configs = require("plugin_configs.lualine")
+local telescope_configs = require("plugin_configs.telescope")
+local trouble_configs = require("plugin_configs.trouble")
+local noice_configs = require("plugin_configs.noice")
+local treesitter_configs = require("plugin_configs.treesitter")
+local indent_blankline_configs = require("plugin_configs.indent_blankline")
+local zen_mode_configs = require("plugin_configs.zen_mode")
+local neogen_configs = require("plugin_configs.neogen")
+local alpha_configs = require("plugin_configs.alpha")
 
 return {
-  {
-    "nvim-telescope/telescope.nvim",
-    keys = {
-      { "<leader>sh", false },
-      { "<leader>hh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-    },
-    opts = {
-      defaults = {
-        layout_strategy = "horizontal",
-        sorting_strategy = "ascending",
-        layout_config = {
-          height = 0.7,
-          width = 0.6,
-          prompt_position = "top",
-        },
-      },
-    },
-  },
-  {
-    "christoomey/vim-tmux-navigator",
-  },
-  {
-    "folke/trouble.nvim",
-    keys = {
-      { "<leader>xx", false },
-      { "<leader>xX", false },
-      { "<leader>tr", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
-      { "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-    },
-  },
-  {
-    "folke/noice.nvim",
-    opts = {
-      cmdline = {
-        view = "cmdline",
-        format = {
-          cmdline = { pattern = "^:", icon = "󰘳", lang = "vim" },
-        },
-      },
-      presets = {
-        bottom_search = false,
-        command_palette = false,
-        long_message_to_split = false,
-        inc_rename = false,
-      },
-    },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, "jsdoc")
-    end,
-  },
   {
     "navarasu/onedark.nvim",
     lazy = true,
@@ -86,49 +24,47 @@ return {
     },
   },
   {
+    "nvim-telescope/telescope.nvim",
+    keys = telescope_configs.keys,
+    opts = telescope_configs.opts,
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+  },
+  {
+    "folke/trouble.nvim",
+    keys = trouble_configs.keys,
+  },
+  {
+    "folke/noice.nvim",
+    opts = noice_configs.opts,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = treesitter_configs.opts,
+  },
+  {
     "nvim-lualine/lualine.nvim",
-    opts = lualine_confgs.opts,
+    opts = lualine_configs.opts,
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      show_current_context_start = true,
-      show_trailing_blankline_indent = true,
-      show_current_context = true,
-    },
+    opts = indent_blankline_configs.opts,
   },
   {
     "goolord/alpha-nvim",
-    opts = function()
-      local dashboard = require("alpha.themes.dashboard")
-      dashboard.section.header.val = vim.split(logo, "\n")
-    end,
+    opts = alpha_configs.opts,
   },
   {
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = true,
-    keys = {
-      { "<leader>ng", "<cmd>Neogen<cr>" },
-      { "<leader>nf", "<cmd>Neogen func<cr>" },
-      { "<leader>nc", "<cmd>Neogen class<cr>" },
-      { "<leader>nt", "<cmd>Neogen type<cr>" },
-    },
+    keys = neogen_configs.keys,
   },
   {
     "folke/zen-mode.nvim",
-    keys = {
-      { "<leader>zz", "<cmd>ZenMode<cr>" },
-    },
-    opts = {
-      window = {
-        backdrop = 0.95,
-        width = 140,
-        options = {
-          cursorline = true,
-        },
-      },
-    },
+    keys = zen_mode_configs.keys,
+    opts = zen_mode_configs.opts,
   },
 
   -- Diabaled plugins
