@@ -1,6 +1,7 @@
-# 🫣 JoshVim (I literally took lazyvim and disabled stuff)
+![Screenshot 2023-07-06 at 2 56 52 PM](https://github.com/Rumone/JoshNvim/assets/63555633/9a3adb41-a686-4b3c-9d6d-afe3ba7be54e)
+> If you can't read the banner it says "JOSH.DEV"
 
-Config was created by customizing [LazyVim](https://github.com/LazyVim/LazyVim).
+# 🫣 JoshVim 
 
 ## Installation
 > Note: If you currently have a neovim setup that you would like to keep just rename `~/.config/nvim` to anything you want really
@@ -11,6 +12,7 @@ mv ~/.config/nvim ~/.config/thisIsMyBackup
   ```
   git clone git@github.com:Rumone/JoshVim.git ~/.config/nvim
   ```
+
 ## FAQ
 1. What if it doesn't work?
 
@@ -18,4 +20,12 @@ I dont know enuh it works for me. Start a discussion maybe.
 
 2. Why did you overrwrite the entire repo?
 
-I felt it was time.
+I felt it was time to let go of LazyVim and spend hours inventing my own. There are a few more steps involved if you want to use this config by the way (have fun figuring that out).
+> You may run into lsp issue because this config doesn't install any by default. run `LspInstall` and chose an lsp yourself the rest should just work out of the box, hopefully.
+
+3. Why is there an apple icon in my status line I run linux?
+
+You machine is secretly a macbook
+
+## CONTRIBUTING
+Just create a PR bro it's not that deep. I will take a look and tell you to change things.
