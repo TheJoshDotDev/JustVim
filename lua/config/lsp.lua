@@ -36,7 +36,6 @@ lsp.setup()
 
 local cmp = require('cmp')
 
-
 require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
@@ -48,7 +47,7 @@ cmp.setup({
   },
   mapping = {
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-e>'] = function(fallback)
+    ['<Tab>'] = function(fallback)
       cmp.mapping.abort()
       local copilot_keys = vim.fn["copilot#Accept"]()
       if copilot_keys ~= "" then
@@ -57,7 +56,6 @@ cmp.setup({
         fallback()
       end
     end,
-    ['<Tab>'] = nil,
     ['<S-Tab>'] = nil
   },
   formatting = {
