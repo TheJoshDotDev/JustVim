@@ -15,3 +15,7 @@ mv ~/.config/nvim ~/.config/thisIsMyBackup
 1. What if it doesn't work?
 
 I dont know enuh it works for me. Start a discussion maybe.
+
+2. Why did you overrwrite the entire repo?
+
+I felt it was time.
