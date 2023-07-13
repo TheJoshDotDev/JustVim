@@ -24,6 +24,7 @@ keymap.set("n", "<leader>we", "<C-w>=") -- make split windows equal width & heig
 keymap.set("n", "<leader>wd", "<C-w>c") -- close current split window
 
 keymap.set("n", "<leader>mv", "<C-w>|") -- Maximise vertical pane
+keymap.set("n", "<leader>mh", "<C-w>_") -- Maximise vertical pane
 
 -- file explorer
 keymap.set("n", "<leader>e", "<cmd>Ex<cr>")
@@ -53,3 +54,8 @@ keymap.set("n", "<leader>gg", "<cmd>G<cr>")
 
 -- persistence
 keymap.set("n", "<leader>ss", "<cmd>lua require('persistence').load()<cr>")
+
+-- terminal
+keymap.set("t", "jj", "<C-\\><C-n>")
+keymap.set("n", "<leader>vt", "<cmd>vsplit term://zsh<cr>")
+keymap.set("n", "<leader>ht", "<cmd>split term://zsh<cr>")

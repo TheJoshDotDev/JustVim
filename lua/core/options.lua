@@ -9,6 +9,7 @@ o.number = true
 o.relativenumber = true
 o.background = "dark"
 o.cursorline = true
+o.scrolloff = 8
 
 -- editor
 o.clipboard:append("unnamedplus")

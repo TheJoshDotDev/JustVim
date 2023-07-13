@@ -1,3 +1,4 @@
+local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 
 vim.keymap.set('n', '<leader>fd', function()
@@ -7,8 +8,7 @@ vim.keymap.set('n', '<leader>so', function()
 	builtin.lsp_document_symbols()
 end)
 
-
-require('telescope').setup({
+telescope.setup({
 	defaults = {
 		layout_strategy = "horizontal",
 		sorting_strategy = "ascending",

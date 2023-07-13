@@ -3,10 +3,14 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'ahmedkhalf/project.nvim'
+    },
     keys = {
       { "<leader>fb", "<cmd>Telescope buffers<cr>" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>" },
+      { "<leader>rr", "<cmd>Telescope oldfiles<cr>" },
 
       { '<leader>gf', '<cmd>Telescope git_files<CR>' },
       { '<leader>gc', '<cmd>Telescope git_commits<CR>' },
@@ -102,7 +106,6 @@ return {
   },
   {
     'lukas-reineke/indent-blankline.nvim',
-    lazy = true,
     config = function()
       require('config.indent_blankline')
     end
@@ -137,7 +140,7 @@ return {
   {
     'folke/zen-mode.nvim',
     keys = {
-      { "<leader>zz", "<cmd>Zenmode<cr>" },
+      { "<leader>fo", "<cmd>ZenMode<cr>" },
     },
     opts = {}
   },
@@ -166,6 +169,12 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('config.alpha')
+    end
+  },
+  {
+    'ahmedkhalf/project.nvim',
+    config = function()
+      require('config.project')
     end
   }
 }

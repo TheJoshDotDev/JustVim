@@ -5,6 +5,12 @@ local lsp = require('lsp-zero').preset({
   }
 })
 
+lsp.ensure_installed({
+  'tsserver',
+  'eslint',
+  'lua_ls'
+})
+
 lsp.set_sign_icons({
   error = '✘',
   warn = '▲',
@@ -72,7 +78,7 @@ local null_ls = require('null-ls')
 
 null_ls.setup({
   sources = {
-    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.prettier,
   }
 })
 

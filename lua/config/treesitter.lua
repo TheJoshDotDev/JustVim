@@ -15,6 +15,7 @@ require 'nvim-treesitter.configs'.setup {
 		"typescript",
 		"yaml",
 		"jsdoc",
+		"dart"
 	},
 
 	sync_install = false,
