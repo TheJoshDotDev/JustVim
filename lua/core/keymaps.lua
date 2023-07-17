@@ -57,5 +57,6 @@ keymap.set("n", "<leader>ss", "<cmd>lua require('persistence').load()<cr>")
 
 -- terminal
 keymap.set("t", "jj", "<C-\\><C-n>")
+keymap.set("n", "<leader>st", "<cmd>terminal<cr>")
 keymap.set("n", "<leader>vt", "<cmd>vsplit term://zsh<cr>")
 keymap.set("n", "<leader>ht", "<cmd>split term://zsh<cr>")
