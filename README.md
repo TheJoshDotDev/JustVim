@@ -1,5 +1,5 @@
 ![Screenshot 2023-07-06 at 2 56 52 PM](https://github.com/Rumone/JoshNvim/assets/63555633/9a3adb41-a686-4b3c-9d6d-afe3ba7be54e)
-> If you can't read the banner it says "JOSH.DEV"
+> If you can't read the banner it says "Just.Vim". [Home art](https://ascii.today/)
 
 # 🫣 JustVim
 This neovim config serves to help people who are already in the neovim ecosystem but don't want to setup nvim themselves.
@@ -14,20 +14,6 @@ mv ~/.config/nvim ~/.config/thisIsMyBackup
   ```
   git clone git@github.com:Rumone/JoshVim.git ~/.config/nvim
   ```
-
-## FAQ
-1. What if it doesn't work?
-
-I dont know enuh it works for me. Start a discussion maybe.
-
-2. Why did you overrwrite the entire repo?
-
-I felt it was time to let go of LazyVim and spend hours inventing my own. There are a few more steps involved if you want to use this config by the way (have fun figuring that out).
-> You may run into lsp issue because this config doesn't install any by default. run `LspInstall` and chose an lsp yourself the rest should just work out of the box, hopefully.
-
-3. Why is there an apple icon in my status line I run linux?
-
-You machine is secretly a macbook
 
 ## Todo
 [] Investigate more areas for lazy loading plugins
@@ -48,3 +34,17 @@ This note is to inform users of this config that.
 - This will not stop the evolution of this nvim config.
 [More info from the creator here](https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1621)
 
+
+## FAQ
+1. What if it doesn't work?
+
+I dont know enuh it works for me. Start a discussion maybe.
+
+2. Why did you overrwrite the entire repo?
+
+I felt it was time to let go of LazyVim and spend hours inventing my own. There are a few more steps involved if you want to use this config by the way (have fun figuring that out).
+> You may run into lsp issue because this config doesn't install any by default. run `LspInstall` and chose an lsp yourself the rest should just work out of the box, hopefully.
+
+3. Why is there an apple icon in my status line I run linux?
+
+You machine is secretly a macbook
