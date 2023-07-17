@@ -23,8 +23,8 @@ keymap.set("n", "<leader>wh", "<C-w>s") -- split window horizontally
 keymap.set("n", "<leader>we", "<C-w>=") -- make split windows equal width & height
 keymap.set("n", "<leader>wd", "<C-w>c") -- close current split window
 
-keymap.set("n", "<leader>mv", "<C-w>|") -- Maximise vertical pane
-keymap.set("n", "<leader>mh", "<C-w>_") -- Maximise vertical pane
+keymap.set("n", "<leader>mv", "<C-w>_") -- Maximise vertical
+keymap.set("n", "<leader>mh", "<C-w>|") -- Maximise horizontal
 
 -- file explorer
 keymap.set("n", "<leader>e", "<cmd>Ex<cr>")
