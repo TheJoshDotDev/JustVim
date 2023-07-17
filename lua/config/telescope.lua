@@ -1,12 +1,28 @@
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 
-vim.keymap.set('n', '<leader>fd', function()
-	builtin.diagnostics({ bufnr = 0 })
-end)
-vim.keymap.set('n', '<leader>so', function()
-	builtin.lsp_document_symbols()
-end)
+local map = vim.keymap.set
+
+-- files
+map('n', '<leader>rr', builtin.oldfiles)
+map('n', '<leader>fb', builtin.buffers)
+
+-- diagnostics
+map('n', '<leader>dd', builtin.lsp_type_definitions)
+map('n', '<leader>so', builtin.lsp_document_symbols)
+map('n', '<leader>gr', builtin.lsp_references)
+map('n', '<leader>gd', builtin.lsp_definitions)
+map('n', '<leader>gi', builtin.lsp_implementations)
+map('n', '<leader>gt', builtin.lsp_type_definitions)
+
+-- help
+map('n', '<leader>hh', builtin.help_tags)
+
+-- git
+map('n', '<leader>gb', builtin.git_branches)
+map('n', '<leader>gc', builtin.git_commits)
+map('n', '<leader>gs', builtin.git_status)
+
 
 telescope.setup({
 	defaults = {

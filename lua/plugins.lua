@@ -8,18 +8,9 @@ return {
       'ahmedkhalf/project.nvim'
     },
     keys = {
-      { "<leader>fb", "<cmd>Telescope buffers<cr>" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>" },
       { "<leader>rr", "<cmd>Telescope oldfiles<cr>" },
-
-      { '<leader>gf', '<cmd>Telescope git_files<CR>' },
-      { '<leader>gc', '<cmd>Telescope git_commits<CR>' },
-      { '<leader>go', '<cmd>Telescope git_branches<CR>' },
-
-      { "<leader>sg", "<cmd>Telescope grep_string<cr>" },
-      { '<leader>sb', '<cmd>Telescope current_buffer_fuzzy_find<cr>' },
-
-      { '<leader>hh', '<cmd>Telescope help_tags<cr>' },
     },
     config = function()
       require('config.telescope')
@@ -176,5 +167,5 @@ return {
     config = function()
       require('config.project')
     end
-  }
+  },
 }
