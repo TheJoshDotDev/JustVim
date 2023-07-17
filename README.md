@@ -1,7 +1,8 @@
-![Screenshot 2023-07-06 at 2 56 52 PM](https://github.com/Rumone/JoshNvim/assets/63555633/9a3adb41-a686-4b3c-9d6d-afe3ba7be54e)
+![Screenshot 2023-07-17 at 10 35 05 AM](https://github.com/Rumone/JoshNvim/assets/63555633/6ecb34ac-690e-4f0e-8055-3bdfacf92b03)
 > If you can't read the banner it says "Just.Vim". [Home art](https://ascii.today/)
 
 # 🫣 JustVim
+
 This neovim config serves to help people who are already in the neovim ecosystem but don't want to setup nvim themselves.
 > The keybinds are very oppinionated
 
