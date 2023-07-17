@@ -1,7 +1,9 @@
 ![Screenshot 2023-07-06 at 2 56 52 PM](https://github.com/Rumone/JoshNvim/assets/63555633/9a3adb41-a686-4b3c-9d6d-afe3ba7be54e)
 > If you can't read the banner it says "JOSH.DEV"
 
-# 🫣 JoshVim 
+# 🫣 JustNVIM
+This neovim config serves to help people who are already in the neovim ecosystem but don't want to setup nvim themselves.
+> The keybinds are very oppinionated
 
 ## Installation
 > Note: If you currently have a neovim setup that you would like to keep just rename `~/.config/nvim` to anything you want really
@@ -34,6 +36,15 @@ You machine is secretly a macbook
 [] Enable scope highlighting, Pretty sure that has to do with treesitter
 [] Look into a few auto commands that could help my workflow
 [] Add documentation then use whichkey to display them. Or I might just create a buffer with all the keymaps that you can access through telescope
+[] Add a link to all the plugins used 
 
 ## CONTRIBUTING
 Just create a PR bro it's not that deep. I will take a look and tell you to change things.
+
+## Note
+The `null_ls` a plugin will be archived as of August 11, 2023. It was an integral plugin to the nvim community bridging a niche but important gap between nvim and LSP.
+This note is to inform users of this config that.
+- This plugin was and still is important and I am curious to see what takes it's place.
+- This will not stop the evolution of this nvim config.
+[More info from the creator here](https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1621)
+
