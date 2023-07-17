@@ -32,15 +32,3 @@ autocmd('FileType', {
     vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = true })
   end
 })
-
-
--- local vimFugitive = augroup('VimFugitive', {})
---
--- autocmd('FileType', {
---   group = vimFugitive,
---   pattern = 'fugitive',
---   callback = function()
---     vim.keymap.set('n', '<leader>pp', '<cmd>Git push<cr>')
---     vim.keymap.set('n', '<leader>po', '<cmd>Git push -u origin<cr>')
---   end
--- })
