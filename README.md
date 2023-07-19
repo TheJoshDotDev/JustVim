@@ -17,13 +17,13 @@ mv ~/.config/nvim ~/.config/thisIsMyBackup
   ```
 
 ## Todo
-[] Investigate more areas for lazy loading plugins
-[] Remove even more plugins if I can
-[] Refactor parsers installed. I dont use half of these
-[] Enable scope highlighting, Pretty sure that has to do with treesitter
-[] Look into a few auto commands that could help my workflow
-[] Add documentation then use whichkey to display them. Or I might just create a buffer with all the keymaps that you can access through telescope
-[] Add a link to all the plugins used 
+- [ ] Investigate more areas for lazy loading plugins
+- [ ] Remove even more plugins if I can
+- [ ] Refactor parsers installed. I dont use half of these
+- [ ] Enable scope highlighting, Pretty sure that has to do with treesitter
+- [ ] Look into a few auto commands that could help my workflow
+- [ ] Add documentation then use whichkey to display them. Or I might just create a buffer with all the keymaps that you can access through telescope
+- [ ] Add a link to all the plugins used 
 
 ## CONTRIBUTING
 Just create a PR bro it's not that deep. I will take a look and tell you to change things.
