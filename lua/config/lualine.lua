@@ -1,48 +1,42 @@
 local navic = require("nvim-navic")
+local lualine = require("lualine")
 
-local apple_logo = ""
+local apple_logo = ""
 local symbols_modified = " ●"
 local symbols_readonly = " "
 
-require('lualine').setup({
+local customWinbar = {
+  lualine_c = {
+    {
+      "filename",
+      symbols = {
+        modified = symbols_modified,
+        readonly = symbols_readonly,
+      },
+    },
+  },
+}
+
+lualine.setup({
   options = {
     icons_enabled = true,
-    theme = 'catppuccin',
+    theme = 'auto',
     component_separators = '|',
-    section_separators = '',
+    section_separators = { left = '', right = '' },
     globalstatus = true,
   },
-  inactive_winbar = {
-    lualine_c = {
+  tabline = {
+    lualine_a = {
       {
-        "filename",
+        function()
+          local cwd = vim.fn.getcwd()
+          return " " .. cwd:match("%w+$")
+        end,
+      }
 
-        symbols = {
-          modified = symbols_modified,
-          readonly = symbols_readonly,
-        },
-      },
-      {
-        function()
-          return navic.get_location()
-        end,
-        cond = function()
-          return package.loaded["nvim-navic"] and navic.is_available()
-        end,
-      }
     },
-    lualine_y = { "progress" },
-  },
-  winbar = {
     lualine_c = {
       {
-        "filename",
-        symbols = {
-          modified = symbols_modified,
-          readonly = symbols_readonly,
-        },
-      },
-      {
         function()
           return navic.get_location()
         end,
@@ -51,8 +45,12 @@ require('lualine').setup({
         end,
       }
     },
-    lualine_y = { "progress" },
+    lualine_y = {
+      { "tabs" }
+    }
   },
+  inactive_winbar = customWinbar,
+  winbar = customWinbar,
   sections = {
     lualine_a = {
       {
@@ -60,6 +58,66 @@ require('lualine').setup({
         fmt = function(mode)
           return apple_logo .. " " .. mode
         end,
+      },
+    },
+    lualine_b = {},
+    lualine_c = {
+      {
+        "diagnostics",
+        sources = { "nvim_lsp" },
+        always_visible = true,
+        symbols = {
+          error = " ",
+          warn = " ",
+          info = " ",
+          hint = " ",
+        },
+      },
+    },
+    lualine_x = {
+      {
+        "branch",
+        icon = "",
+        color = { fg = "#f4a97f", gui = "bold" },
+      },
+      {
+        "diff",
+        colored = true,
+        symbols = {
+          added = " ",
+          modified = " ",
+          removed = " ",
+        },
+      },
+    },
+    lualine_y = {
+      {
+        "filetype",
+        colored = false,
+      },
+      {
+        "progress",
+      },
+    },
+    lualine_z = {
+      {
+        function()
+          local msg = 'No Active Lsp'
+          local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+          local clients = vim.lsp.get_active_clients()
+          if next(clients) == nil then
+            return msg
+          end
+          for _, client in ipairs(clients) do
+            local filetypes = client.config.filetypes
+            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+              return client.name
+            end
+          end
+          return msg
+        end,
+        icon = ' LSP:',
+        color = { fg = '#333333', gui = 'bold' },
       },
     },
   }

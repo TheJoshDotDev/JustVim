@@ -43,14 +43,10 @@ return {
     dependencies = {
       -- Lsp
       { 'neovim/nvim-lspconfig' },
-      {
-        'williamboman/mason.nvim',
-        build = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
-      },
+      { 'williamboman/mason.nvim', },
       { 'williamboman/mason-lspconfig.nvim' },
       { 'jose-elias-alvarez/null-ls.nvim' },
+      { 'pmizio/typescript-tools.nvim' },
 
       -- Completion
       { 'hrsh7th/nvim-cmp' },
@@ -64,15 +60,15 @@ return {
       { 'onsails/lspkind.nvim' },
     },
     config = function()
-      require('config.lsp')
+      require('config.lsp.init')
     end
   },
-
   -- UI
   {
-    'catppuccin/nvim',
-    name = "catppuccin",
+    "catppuccin/nvim",
+    lazy = false,
     priority = 1000,
+    opts = {},
     config = function()
       require('config.catppuccin')
     end
@@ -86,12 +82,17 @@ return {
       require('config.lualine')
     end
   },
-  -- Editor
   {
-    'SmiteshP/nvim-navic',
-    lazy = true,
-    dependencies = 'neovim/nvim-lspconfig'
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    },
+    config = function()
+      require('config.bufferline')
+    end
   },
+  -- Editor
   {
     'tpope/vim-sleuth'
   },
@@ -103,13 +104,11 @@ return {
   },
   {
     'numToStr/Comment.nvim',
-    VeryLazy = true,
     opts = {}
   },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    VeryLazy = true,
     config = function()
       require('todo-comments').setup()
     end
@@ -123,8 +122,7 @@ return {
     'echasnovski/mini.bufremove',
     version = '*',
     keys = {
-      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end },
-      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end },
+      { "<leader>bd", function() require("mini.bufremove").delete(0, true) end },
     },
     opts = {}
   },
@@ -135,7 +133,9 @@ return {
     },
     opts = {}
   },
-  { 'github/copilot.vim' },
+  {
+    'github/copilot.vim'
+  },
 
   -- Git
   {
@@ -168,4 +168,9 @@ return {
       require('config.project')
     end
   },
+
+  -- tmux
+  {
+    "christoomey/vim-tmux-navigator"
+  }
 }

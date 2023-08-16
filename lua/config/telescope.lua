@@ -6,6 +6,8 @@ local map = vim.keymap.set
 -- files
 map('n', '<leader>rr', builtin.oldfiles)
 map('n', '<leader>fb', builtin.buffers)
+map('n', '<leader>sg', builtin.grep_string)
+map('n', '<leader>sb', builtin.current_buffer_fuzzy_find)
 
 -- diagnostics
 map('n', '<leader>dd', builtin.lsp_type_definitions)
@@ -26,11 +28,13 @@ map('n', '<leader>gs', builtin.git_status)
 
 telescope.setup({
 	defaults = {
+		prompt_prefix = "🔭 ",
+		selection_caret = " ",
 		layout_strategy = "horizontal",
 		sorting_strategy = "ascending",
 		layout_config = {
 			height = 0.7,
-			width = 0.6,
+			width = 0.9,
 			prompt_position = "top",
 		},
 	},

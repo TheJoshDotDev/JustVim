@@ -4,7 +4,6 @@ vim.g.mapleader = " "
 ---------------------
 -- General Keymaps
 ---------------------
-
 -- use jk to exit insert mode
 keymap.set("i", "jj", "<ESC>")
 
@@ -30,7 +29,7 @@ keymap.set("n", "<leader>mh", "<C-w>|") -- Maximise horizontal
 keymap.set("n", "<leader>e", "<cmd>Ex<cr>")
 
 -- tab management
-keymap.set("n", "<leader>tt", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+keymap.set("n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 keymap.set("n", "<leader>td", "<cmd>tabclose<CR>", { desc = "Close current tab" })
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
@@ -51,12 +50,8 @@ keymap.set("n", "<leader>lc", "<cmd>Lazy clean<cr>")
 
 -- git
 keymap.set("n", "<leader>gg", "<cmd>G<cr>")
+keymap.set("n", "<leader>rb", "<cmd>e<cr>")
+keymap.set("n", "<leader>rB", "<cmd>bufdo e<cr>")
 
 -- persistence
 keymap.set("n", "<leader>ss", "<cmd>lua require('persistence').load()<cr>")
-
--- terminal
-keymap.set("t", "jj", "<C-\\><C-n>")
-keymap.set("n", "<leader>st", "<cmd>terminal<cr>")
-keymap.set("n", "<leader>vt", "<cmd>vsplit term://zsh<cr>")
-keymap.set("n", "<leader>ht", "<cmd>split term://zsh<cr>")
