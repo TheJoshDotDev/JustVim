@@ -21,8 +21,8 @@ lualine.setup({
   options = {
     icons_enabled = true,
     theme = 'auto',
-    component_separators = '|',
-    section_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
     globalstatus = true,
   },
   tabline = {
@@ -58,14 +58,19 @@ lualine.setup({
         fmt = function(mode)
           return apple_logo .. " " .. mode
         end,
-      },
+      }
     },
-    lualine_b = {},
+    lualine_b = {
+      {
+        "branch",
+        icon = "",
+      }
+    },
     lualine_c = {
       {
         "diagnostics",
         sources = { "nvim_lsp" },
-        always_visible = true,
+        always_visible = false,
         symbols = {
           error = " ",
           warn = " ",
@@ -76,13 +81,9 @@ lualine.setup({
     },
     lualine_x = {
       {
-        "branch",
-        icon = "",
-        color = { fg = "#f4a97f", gui = "bold" },
-      },
-      {
         "diff",
         colored = true,
+        always_visible = false,
         symbols = {
           added = " ",
           modified = " ",
@@ -116,8 +117,7 @@ lualine.setup({
           end
           return msg
         end,
-        icon = ' LSP:',
-        color = { fg = '#333333', gui = 'bold' },
+        icon = ' ',
       },
     },
   }

@@ -15,7 +15,8 @@ require 'nvim-treesitter.configs'.setup {
 		"typescript",
 		"yaml",
 		"jsdoc",
-		"go"
+		"go",
+		"angular"
 	},
 
 	sync_install = false,
@@ -24,5 +25,15 @@ require 'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false,
+	},
+
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "<C-CR>",
+			node_incremental = "<C-CR>",
+			scope_incremental = false,
+			node_decremental = "<bs>",
+		},
 	},
 }

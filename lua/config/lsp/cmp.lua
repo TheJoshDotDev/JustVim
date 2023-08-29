@@ -1,12 +1,8 @@
 local cmp = require('cmp')
 
+require('lsp-zero').extend_cmp()
+
 cmp.setup({
-	sources = {
-		{ name = 'path' },
-		{ name = 'nvim_lsp' },
-		{ name = 'buffer',  keyword_length = 3 },
-		{ name = 'luasnip', keyword_length = 2 },
-	},
 	mapping = {
 		['<CR>'] = cmp.mapping.confirm({ select = true }),
 		['<Tab>'] = function(fallback)
@@ -18,14 +14,14 @@ cmp.setup({
 				fallback()
 			end
 		end,
-		['<C-Space>'] = cmp.mapping.complete(),
 		['<S-Tab>'] = nil
 	},
+
 	formatting = {
 		fields = { 'abbr', 'kind', 'menu' },
 		format = require('lspkind').cmp_format({
 			mode = 'symbol_text',
-			maxwidth = 50,
+			maxwidth = 40,
 			ellipsis_char = '...',
 		})
 	},

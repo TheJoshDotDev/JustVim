@@ -1,8 +1,9 @@
-require('catppuccin').setup({
-	flavour = 'macchiato',
-	terminal_colors = true,
-	styles = {
-		comments = { "italic" }
+require("catppuccin").setup({
+	flavour = "mocha",
+	transparent_background = true,
+	background = {
+		light = "latte",
+		dark = "mocha",
 	},
 })
 

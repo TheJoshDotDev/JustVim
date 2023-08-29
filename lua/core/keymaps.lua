@@ -17,8 +17,8 @@ keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
 
 -- window management
-keymap.set("n", "<leader>wv", "<C-w>v") -- split window vertically
-keymap.set("n", "<leader>wh", "<C-w>s") -- split window horizontally
+keymap.set("n", "<leader>wh", "<C-w>v") -- split window vertically
+keymap.set("n", "<leader>wv", "<C-w>s") -- split window horizontally
 keymap.set("n", "<leader>we", "<C-w>=") -- make split windows equal width & height
 keymap.set("n", "<leader>wd", "<C-w>c") -- close current split window
 

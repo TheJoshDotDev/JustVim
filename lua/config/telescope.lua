@@ -2,6 +2,7 @@ local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 
 local map = vim.keymap.set
+local themes = require("telescope.themes")
 
 -- files
 map('n', '<leader>rr', builtin.oldfiles)
@@ -33,9 +34,17 @@ telescope.setup({
 		layout_strategy = "horizontal",
 		sorting_strategy = "ascending",
 		layout_config = {
-			height = 0.7,
+			height = 0.85,
 			width = 0.9,
 			prompt_position = "top",
 		},
 	},
+	extensions = {
+		["ui-select"] = {
+			themes.get_dropdown({}),
+		},
+	},
 })
+
+telescope.load_extension("fzf")
+telescope.load_extension("ui-select")

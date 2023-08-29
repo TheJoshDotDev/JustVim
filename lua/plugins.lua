@@ -5,7 +5,10 @@ return {
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'ahmedkhalf/project.nvim'
+      'ahmedkhalf/project.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      'nvim-telescope/telescope-ui-select.nvim'
+
     },
     keys = {
       { "<leader>ff", "<cmd>Telescope find_files<cr>" },
@@ -16,19 +19,18 @@ return {
       require('config.telescope')
     end
   },
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
-    cond = function()
-      return vim.fn.executable 'make' == 1
-    end,
-  },
-
   -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
+
+      { 'nvim-treesitter/nvim-treesitter-textobjects' },
+
+      -- this specific branch adds a fix
+      {
+        "elgiano/nvim-treesitter-angular",
+        branch = "topic/jsx-fix"
+      }
     },
     build = ':TSUpdate',
     config = function()
@@ -39,7 +41,7 @@ return {
   -- Lsp
   {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    branch = 'dev-v3',
     dependencies = {
       -- Lsp
       { 'neovim/nvim-lspconfig' },
@@ -66,11 +68,16 @@ return {
   -- UI
   {
     "catppuccin/nvim",
-    lazy = false,
+    name = "catppuccin",
     priority = 1000,
-    opts = {},
     config = function()
       require('config.catppuccin')
+    end
+  },
+  {
+    'SmiteshP/nvim-navic',
+    config = function()
+      require('config.navic')
     end
   },
   {
@@ -80,16 +87,6 @@ return {
     },
     config = function()
       require('config.lualine')
-    end
-  },
-  {
-    'akinsho/bufferline.nvim',
-    version = "*",
-    dependencies = {
-      'nvim-tree/nvim-web-devicons'
-    },
-    config = function()
-      require('config.bufferline')
     end
   },
   -- Editor

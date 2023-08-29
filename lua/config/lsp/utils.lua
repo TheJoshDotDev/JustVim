@@ -1,8 +1,7 @@
 local M = {}
 
 M.on_attach = function(client, bufnr)
-	require('lsp-zero').on_attach(client, bufnr)
-	require('lsp-zero').buffer_autoformat()
+	require('lsp-zero').default_keymaps({ bufnr = bufnr })
 	if client.server_capabilities.documentSymbolProvider then
 		require("nvim-navic").attach(client, bufnr)
 	end
