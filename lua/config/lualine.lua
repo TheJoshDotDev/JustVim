@@ -15,13 +15,26 @@ local customWinbar = {
       },
     },
   },
+  lualine_x = {
+    {
+      "diagnostics",
+      sources = { "nvim_lsp" },
+      always_visible = true,
+      symbols = {
+        error = " ",
+        warn = " ",
+        info = " ",
+        hint = " ",
+      },
+    },
+  }
 }
 
 lualine.setup({
   options = {
     icons_enabled = true,
     theme = 'auto',
-    component_separators = '|',
+    component_separators = '',
     section_separators = { left = '', right = '' },
     globalstatus = true,
   },
@@ -65,19 +78,7 @@ lualine.setup({
         icon = "",
       }
     },
-    lualine_c = {
-      {
-        "diagnostics",
-        sources = { "nvim_lsp" },
-        always_visible = false,
-        symbols = {
-          error = " ",
-          warn = " ",
-          info = " ",
-          hint = " ",
-        },
-      },
-    },
+    lualine_c = {},
     lualine_x = {
       {
         "diff",
