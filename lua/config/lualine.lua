@@ -19,7 +19,7 @@ local customWinbar = {
     {
       "diagnostics",
       sources = { "nvim_lsp" },
-      always_visible = true,
+      always_visible = false,
       symbols = {
         error = " ",
         warn = " ",

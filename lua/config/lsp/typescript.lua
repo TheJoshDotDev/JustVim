@@ -1,7 +1,9 @@
 require('typescript-tools').setup({
 	on_attach = function(client)
 		-- disable tsserver formatting if you plan on formatting via null-ls
-		client.resolved_capabilities.document_formatting = false
+
+		-- TODO: fix this not working
+		-- client.resolved_capabilities.document_formatting = false
 
 		vim.keymap.set('n', '<leader>oi', '<cmd>TSToolsOrganizeImports<cr>')
 		vim.keymap.set('n', '<leader>si', '<cmd>TSToolsSortImports<cr>')

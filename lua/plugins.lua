@@ -8,7 +8,6 @@ return {
       'ahmedkhalf/project.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       'nvim-telescope/telescope-ui-select.nvim'
-
     },
     keys = {
       { "<leader>ff", "<cmd>Telescope find_files<cr>" },
@@ -23,10 +22,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
-
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
-
-      -- this specific branch adds a fix
       {
         "elgiano/nvim-treesitter-angular",
         branch = "topic/jsx-fix"
@@ -91,13 +87,7 @@ return {
   },
   -- Editor
   {
-    'tpope/vim-sleuth'
-  },
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require('config.indent_blankline')
-    end
+    'tpope/vim-sleuth',
   },
   {
     'numToStr/Comment.nvim',
