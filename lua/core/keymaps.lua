@@ -9,6 +9,7 @@ keymap.set("i", "jj", "<ESC>")
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")
+keymap.set("n", "<leader>kw", ":q<CR>")
 
 --  file navigating
 keymap.set("n", "<C-d>", "<C-d>zz")
@@ -17,13 +18,12 @@ keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
 
 -- window management
-keymap.set("n", "<leader>wh", "<C-w>v") -- split window vertically
-keymap.set("n", "<leader>wv", "<C-w>s") -- split window horizontally
+keymap.set("n", "<leader>h", "<C-w>v")  -- split window vertically
+keymap.set("n", "<leader>v", "<C-w>s")  -- split window horizontally
 keymap.set("n", "<leader>we", "<C-w>=") -- make split windows equal width & height
 keymap.set("n", "<leader>wd", "<C-w>c") -- close current split window
-
-keymap.set("n", "<leader>mv", "<C-w>_") -- Maximise vertical
-keymap.set("n", "<leader>mh", "<C-w>|") -- Maximise horizontal
+keymap.set("n", "<leader>wv", "<C-w>_") -- Maximise vertical
+keymap.set("n", "<leader>wh", "<C-w>|") -- Maximise horizontal
 
 -- file explorer
 keymap.set("n", "<leader>e", "<cmd>Ex<cr>")
@@ -35,7 +35,7 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 
 -- tmux
-keymap.set("n", "<leader>trm", "<cmd>!tmux detach<CR>", { desc = "Detach current tmux session" })
+-- keymap.set("n", "<leader>trm", "<cmd>!tmux detach<CR>", { desc = "Detach current tmux session" })
 
 keymap.set("n", "<C-l>", "<C-w>l")
 keymap.set("n", "<C-h>", "<C-w>h")
