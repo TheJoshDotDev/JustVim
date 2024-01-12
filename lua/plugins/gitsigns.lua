@@ -1,7 +1,6 @@
 return {
 	"lewis6991/gitsigns.nvim",
-	dependencies = { "plenary" },
-	lazy = true,
+	dependencies = { "nvim-lua/plenary.nvim" },
 	cond = function()
 		local output = vim.fn.systemlist("git rev-parse --is-inside-work-tree 2>/dev/null")
 		return #output ~= 0

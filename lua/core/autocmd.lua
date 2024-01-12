@@ -39,7 +39,7 @@ autocmd("LspAttach", {
 		vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
 		vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
 		vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
-		vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
+		vim.keymap.set("n", "sH", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
 		vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
 		vim.keymap.set("n", "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>")
 		vim.keymap.set("x", "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>")
