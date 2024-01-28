@@ -13,8 +13,15 @@ return {
 		{ "rafamadriz/friendly-snippets" },
 	},
 	config = function()
-		local cmp = require("cmp")
-		local luasnip = require("luasnip")
+		local cmp_ok, cmp = pcall(require, "cmp")
+		if not cmp_ok then
+			vim.notify("Nvim Cmp not found", vim.log.levels.ERROR)
+		end
+
+		local luasnip_ok, luasnip = pcall(require, "luasnip")
+		if not luasnip_ok then
+			vim.notify("LuaSnip not found", vim.log.levels.ERROR)
+		end
 
 		cmp.setup({
 			snippet = {

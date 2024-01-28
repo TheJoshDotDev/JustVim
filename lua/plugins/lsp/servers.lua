@@ -1,6 +1,9 @@
 local G = {}
 
-local lspconfig = require("lspconfig")
+local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_ok then
+	vim.notify("Lspconfig not found", vim.log.levels.ERROR)
+end
 local util = lspconfig.util
 
 function G.setupLuaLs()
