@@ -22,7 +22,7 @@ return {
 			{
 				"<leader>cp",
 				function()
-					vim.cmd("Copilot")
+					vim.cmd("Copilot enable")
 				end,
 			},
 		},
