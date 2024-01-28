@@ -35,6 +35,7 @@ return {
 						capabilities = capabilities,
 					})
 				end,
+				["tailwindcss"] = servers.setupTwindLs,
 				["lua_ls"] = servers.setupLuaLs,
 			},
 		})
