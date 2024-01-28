@@ -14,18 +14,22 @@ return {
 	},
 	config = function()
 		local cmp = require("cmp")
+		local luasnip = require("luasnip")
+
 		cmp.setup({
 			snippet = {
 				expand = function(args)
-					require("luasnip").lsp_expand(args.body)
+					luasnip.lsp_expand(args.body)
 				end,
+			},
+			performance = {
+				max_view_entries = 20,
 			},
 			completion = {
 				completeopt = "menu,menuone,preview,noselect",
 			},
 			formatting = {
 				format = function(_, item)
-					print(item)
 					return item
 				end,
 			},
@@ -45,23 +49,25 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
-				["<Tab>"] = function(fallback)
-					cmp.mapping.abort()
-					local has_copilot, _ = pcall(require, "copilot")
-					print(has_copilot)
-					if not has_copilot then
-						fallback()
+				["<C-j>"] = cmp.mapping(function(fallback)
+					local copilot_keys = vim.fn["copilot#Accept"]()
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
+					elseif copilot_keys ~= "" and type(copilot_keys) == "string" then
+						vim.api.nvim_feedkeys(copilot_keys, "i", true)
 					else
-						local copilot_keys = vim.fn["copilot#Accept"]()
-						if copilot_keys ~= "" then
-							vim.api.nvim_feedkeys(copilot_keys, "i", true)
-						else
-							fallback()
-						end
+						fallback()
 					end
-				end,
+				end, {
+					"i",
+					"s",
+				}),
 			}),
 		})
+
+		require("luasnip").filetype_extend("typescriptreact", { "html" })
 
 		require("luasnip.loaders.from_vscode").lazy_load({
 			paths = { "~/.config/nvim/lua/plugins/custom-snips/angular" },
