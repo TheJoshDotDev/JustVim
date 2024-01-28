@@ -4,14 +4,11 @@ return {
 		"tpope/vim-sleuth",
 	},
 	{
-		"numToStr/Comment.nvim",
-		opts = {},
-	},
-	{
-		"folke/todo-comments.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("todo-comments").setup()
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		conftig = function()
+			require("ts_context_commentstring").setup({
+				enable_autocmd = false,
+			})
 		end,
 	},
 	{
@@ -33,18 +30,5 @@ return {
 	},
 	{
 		"christoomey/vim-tmux-navigator",
-	},
-	{
-		"echasnovski/mini.bufremove",
-		version = "*",
-		keys = {
-			{
-				"<leader>q",
-				function()
-					require("mini.bufremove").delete(0, true)
-				end,
-			},
-		},
-		opts = {},
 	},
 }

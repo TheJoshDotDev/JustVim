@@ -2,11 +2,8 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	dependencies = {
 		{ "nvim-treesitter/nvim-treesitter-textobjects" },
-		{
-			"elgiano/nvim-treesitter-angular",
-			branch = "topic/jsx-fix",
-		},
 	},
+	-- diagnostics
 	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter.configs").setup({
@@ -27,7 +24,8 @@ return {
 				"yaml",
 				"jsdoc",
 				"go",
-				"angular",
+				"dart",
+				"tsx",
 			},
 
 			sync_install = false,

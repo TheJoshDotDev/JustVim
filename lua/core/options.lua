@@ -21,7 +21,7 @@ o.shiftwidth = 2
 o.wrap = false
 o.splitright = true
 o.splitbelow = true
-o.signcolumn = 'yes'
+o.signcolumn = "yes"
 
 -- search
 o.ignorecase = true
