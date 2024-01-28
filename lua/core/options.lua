@@ -1,8 +1,5 @@
 local o = vim.opt
 
--- aesthetic
-o.fillchars:append({ eob = " " })
-
 -- general
 o.termguicolors = true
 o.number = true
