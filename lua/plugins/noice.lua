@@ -16,6 +16,11 @@ return {
 				long_message_to_split = true,
 				lsp_doc_border = true,
 			},
+			lsp = {
+				progress = {
+					enabled = false,
+				},
+			},
 		})
 	end,
 }
