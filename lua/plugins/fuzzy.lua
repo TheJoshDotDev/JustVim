@@ -7,6 +7,7 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{ "benfowler/telescope-luasnip.nvim" },
 		{ "nvim-telescope/telescope-ui-select.nvim" },
+		{ "folke/noice.nvim" },
 	},
 
 	config = function()
@@ -77,6 +78,7 @@ return {
 
 		vim.keymap.set("n", "<leader>sn", telescope.extensions.luasnip.luasnip)
 
+		telescope.load_extension("noice")
 		telescope.load_extension("fzf")
 		telescope.load_extension("ui-select")
 		telescope.load_extension("luasnip")
