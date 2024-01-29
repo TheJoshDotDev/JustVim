@@ -13,25 +13,25 @@ return {
 		local mason_status, mason = pcall(require, "mason")
 
 		if not mason_status then
-			vim.notify("Mason not found", vimrr.log.levels.ERROR)
+			vim.notify("Mason not found", vim.log.levels.ERROR)
 		end
 
 		local mason_lspconf_status, mason_lspconfig = pcall(require, "mason-lspconfig")
 
 		if not mason_lspconf_status then
-			vim.notify("Mason LSP Config not found", vimrr.log.levels.ERROR)
+			vim.notify("Mason LSP Config not found", vim.log.levels.ERROR)
 		end
 
 		local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
 		if not cmp_nvim_lsp_status then
-			vim.notify("CMP Nvim LSP not found", vimrr.log.levels.ERROR)
+			vim.notify("CMP Nvim LSP not found", vim.log.levels.ERROR)
 		end
 
 		local null_ls_status, null_ls = pcall(require, "null-ls")
 
 		if not null_ls_status then
-			vim.notify("Null LS not found", vimrr.log.levels.ERROR)
+			vim.notify("Null LS not found", vim.log.levels.ERROR)
 		end
 
 		local autocmds = require("plugins.lsp.autocmds")

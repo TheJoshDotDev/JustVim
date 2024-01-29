@@ -15,12 +15,12 @@ return {
 	config = function()
 		local cmp_ok, cmp = pcall(require, "cmp")
 		if not cmp_ok then
-			vimrr.notify("Nvim Cmp not found", vimrr.log.levels.ERROR)
+			vim.notify("Nvim Cmp not found", vim.log.levels.ERROR)
 		end
 
 		local luasnip_ok, luasnip = pcall(require, "luasnip")
 		if not luasnip_ok then
-			vimrr.notify("LuaSnip not found", vimrr.log.levels.ERROR)
+			vim.notify("LuaSnip not found", vim.log.levels.ERROR)
 		end
 
 		cmp.setup({
@@ -57,13 +57,13 @@ return {
 				["<C-e>"] = cmp.mapping.abort(),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<C-j>"] = cmp.mapping(function(fallback)
-					local copilot_keys = vimrr.fn["copilot#Accept"]()
+					local copilot_keys = vim.fn["copilot#Accept"]()
 					if cmp.visible() then
 						cmp.select_next_item()
 					elseif luasnip.expand_or_jumpable() then
 						luasnip.expand_or_jump()
 					elseif copilot_keys ~= "" and type(copilot_keys) == "string" then
-						vimrr.api.nvim_feedkeys(copilot_keys, "i", true)
+						vim.api.nvim_feedkeys(copilot_keys, "i", true)
 					else
 						fallback()
 					end
