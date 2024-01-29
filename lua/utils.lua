@@ -48,7 +48,7 @@ function J.statusLineInfo()
 		"%#StatusLineReset#",
 		"  ",
 		branch_name(),
-		"%h%m%r%=%-14.(%l,%c%V%)",
+		"%=%-14.(%l,%c%V%)",
 	})
 end
 

@@ -24,5 +24,5 @@ o.signcolumn = "yes"
 o.ignorecase = true
 o.smartcase = true
 
-o.winbar = "%f %m"
+o.winbar = "󰈔 %f %m"
 o.laststatus = 3

@@ -29,7 +29,6 @@ return {
 			},
 			custom_highlights = function(colors)
 				return {
-					TabLineSel = { bg = colors.pink },
 					CmpBorder = { fg = colors.surface2 },
 					Pmenu = { bg = colors.none },
 					IncSearch = { bg = colors.none },
