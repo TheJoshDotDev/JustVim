@@ -23,8 +23,7 @@ return {
 			},
 			color_overrides = {
 				all = {
-					-- text = "#f7e9e6",
-					text = "#ffffff",
+					text = "#C3BAC6",
 				},
 			},
 			custom_highlights = function(colors)
