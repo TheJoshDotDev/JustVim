@@ -6,8 +6,11 @@ return {
 	-- diagnostics
 	build = ":TSUpdate",
 	config = function()
-		require("nvim-treesitter.configs").setup({
-			-- A list of parser names, or "all"
+		local treesitter_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+		if not treesitter_ok then
+			vim.notify("Treesitter not found", vim.log.levels.ERROR)
+		end
+		treesitter.setup({
 			ensure_installed = {
 				"javascript",
 				"typescript",

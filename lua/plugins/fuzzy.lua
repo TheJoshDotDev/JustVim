@@ -10,9 +10,20 @@ return {
 	},
 
 	config = function()
-		local telescope = require("telescope")
+		local telescope_ok, telescope = pcall(require, "telescope")
+		if not telescope_ok then
+			vim.notify("Telescope not found", vim.log.levels.ERROR)
+		end
 
-		local themes = require("telescope.themes")
+		local telescope_themes_ok, telescope_themes = pcall(require, "telescope.themes")
+		if not telescope_themes_ok then
+			vim.notify("Telescope themes not found", vim.log.levels.ERROR)
+		end
+
+		local telescope_builtins_ok, telescope_builtins = pcall(require, "telescope.builtin")
+		if not telescope_builtins_ok then
+			vim.notify("Telescope builtins not found", vim.log.levels.ERROR)
+		end
 
 		telescope.setup({
 			defaults = {
@@ -34,37 +45,35 @@ return {
 			},
 			extensions = {
 				["ui-select"] = {
-					themes.get_dropdown({}),
+					telescope_themes.get_dropdown({}),
 				},
 			},
 		})
 
-		local builtin = require("telescope.builtin")
-
-		vim.keymap.set("n", "<leader>fg", builtin.live_grep)
-		vim.keymap.set("n", "<leader>ff", builtin.find_files)
+		vim.keymap.set("n", "<leader>fg", telescope_builtins.live_grep)
+		vim.keymap.set("n", "<leader>ff", telescope_builtins.find_files)
 
 		-- files
-		vim.keymap.set("n", "<leader>rr", builtin.oldfiles)
-		vim.keymap.set("n", "<leader>fb", builtin.buffers)
-		vim.keymap.set("n", "<leader>sg", builtin.grep_string)
-		vim.keymap.set("n", "<leader>sb", builtin.current_buffer_fuzzy_find)
-		vim.keymap.set("n", "<leader>so", builtin.lsp_document_symbols)
+		vim.keymap.set("n", "<leader>rr", telescope_builtins.oldfiles)
+		vim.keymap.set("n", "<leader>fb", telescope_builtins.buffers)
+		vim.keymap.set("n", "<leader>sg", telescope_builtins.grep_string)
+		vim.keymap.set("n", "<leader>sb", telescope_builtins.current_buffer_fuzzy_find)
+		vim.keymap.set("n", "<leader>so", telescope_builtins.lsp_document_symbols)
 
-		vim.keymap.set("n", "<leader>gr", builtin.lsp_references)
+		vim.keymap.set("n", "<leader>gr", telescope_builtins.lsp_references)
 		vim.keymap.set("n", "<leader>gd", function()
-			builtin.lsp_definitions({ jump_type = "never" })
+			telescope_builtins.lsp_definitions({ jump_type = "never" })
 		end)
-		vim.keymap.set("n", "<leader>gi", builtin.lsp_implementations)
-		vim.keymap.set("n", "<leader>gt", builtin.lsp_type_definitions)
+		vim.keymap.set("n", "<leader>gi", telescope_builtins.lsp_implementations)
+		vim.keymap.set("n", "<leader>gt", telescope_builtins.lsp_type_definitions)
 
 		-- help
-		vim.keymap.set("n", "<leader>sh", builtin.help_tags)
+		vim.keymap.set("n", "<leader>sh", telescope_builtins.help_tags)
 
 		-- git
-		vim.keymap.set("n", "<leader>gb", builtin.git_branches)
-		vim.keymap.set("n", "<leader>gc", builtin.git_commits)
-		vim.keymap.set("n", "<leader>gs", builtin.git_status)
+		vim.keymap.set("n", "<leader>gb", telescope_builtins.git_branches)
+		vim.keymap.set("n", "<leader>gc", telescope_builtins.git_commits)
+		vim.keymap.set("n", "<leader>gs", telescope_builtins.git_status)
 
 		vim.keymap.set("n", "<leader>sn", telescope.extensions.luasnip.luasnip)
 
