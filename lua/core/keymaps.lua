@@ -15,11 +15,11 @@ keymap.set("n", "<leader>kw", ":q<CR>")
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "n", "nzzzv")
-keymap.set("n", "N", "Nzzzv")
-keymap.set("n", "J", "30jzzzv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+
 keymap.set("n", "W", "^")
 keymap.set("n", "E", "$")
--- keymap.set("n", "K", "30kzzzv")
 
 -- window management
 keymap.set("n", "<leader>h", "<C-w>v") -- split window vertically
@@ -29,6 +29,8 @@ keymap.set("n", "<leader>wd", "<C-w>c") -- close current split window
 keymap.set("n", "<leader>wv", "<C-w>_") -- Maximise vertical
 keymap.set("n", "<leader>wh", "<C-w>|") -- Maximise horizontal
 keymap.set("n", "<leader>wm", "<C-w>|<C-w>_") -- Maximise horizontal
+keymap.set("n", "<leader>wh", "<C-w>H") -- Maximise horizontal
+keymap.set("n", "<leader>wl", "<C-w>L") -- Maximise horizontal
 
 -- file explorer
 keymap.set("n", "<leader>e", "<cmd>Ex<cr>")
