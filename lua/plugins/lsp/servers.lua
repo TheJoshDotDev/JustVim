@@ -2,7 +2,7 @@ local G = {}
 
 local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_ok then
-	vim.notify("Lspconfig not found", vim.log.levels.ERROR)
+	vim.notify("Lspconfig not found", vimrr.log.levels.ERROR)
 end
 local util = lspconfig.util
 
