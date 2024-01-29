@@ -32,6 +32,7 @@ return {
 					TabLineSel = { bg = colors.pink },
 					CmpBorder = { fg = colors.surface2 },
 					Pmenu = { bg = colors.none },
+					IncSearch = { bg = colors.none },
 
 					CursorLine = { bg = colors.crust },
 					StatusLine = { bg = colors.crust, fg = colors.teal },
