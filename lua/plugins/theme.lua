@@ -35,8 +35,11 @@ return {
 					IncSearch = { bg = colors.none },
 
 					CursorLine = { bg = colors.crust },
-					StatusLine = { bg = colors.crust, fg = colors.teal },
-					StatusLineNC = { bg = colors.mantle, fg = colors.teal },
+					StatusLine = { bg = colors.mantle, fg = colors.rose },
+
+					WinBar = { bg = colors.crust, fg = colors.teal },
+					WinBarNC = { bg = colors.mantle, fg = colors.crust },
+
 					FloatBorder = { fg = colors.teal },
 					IblScope = { fg = colors.pink },
 				}

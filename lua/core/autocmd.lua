@@ -1,6 +1,8 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
+local utils = require("utils")
+
 local joshDotDev = augroup("JoshDotDev", {})
 
 autocmd("TextYankPost", {
@@ -60,7 +62,6 @@ autocmd({ "VimEnter" }, {
 	group = joshDotDev,
 	callback = function()
 		require("persistence").load()
-		vim.notify("loaded last session")
 	end,
 	nested = true,
 })
@@ -79,5 +80,11 @@ autocmd("LspAttach", {
 		vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
 		vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
 		vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType", "BufLeave", "FocusGained", "BufEnter", "ModeChanged" }, {
+	callback = function()
+		vim.opt.statusline = utils.statusLineInfo()
 	end,
 })

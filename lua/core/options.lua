@@ -23,3 +23,6 @@ o.signcolumn = "yes"
 -- search
 o.ignorecase = true
 o.smartcase = true
+
+o.winbar = "%f %m"
+o.laststatus = 3
