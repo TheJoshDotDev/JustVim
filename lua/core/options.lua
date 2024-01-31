@@ -26,3 +26,4 @@ o.smartcase = true
 
 o.winbar = "󰈔 %f %m"
 o.laststatus = 3
+o.foldmethod = "manual"
