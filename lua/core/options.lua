@@ -19,6 +19,7 @@ o.wrap = false
 o.splitright = true
 o.splitbelow = true
 o.signcolumn = "yes"
+o.fillchars = { eob = " " }
 
 -- search
 o.ignorecase = true
