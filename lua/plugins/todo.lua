@@ -8,6 +8,6 @@ return {
 		end
 
 		todo_comments.setup()
-		vim.keymap.set("n", "<leader>td", "<cmd>TodoTelescope<cr>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<leader>to", "<cmd>TodoTelescope<cr>", { noremap = true, silent = true })
 	end,
 }
