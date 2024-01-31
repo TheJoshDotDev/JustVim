@@ -1,5 +1,10 @@
 return {
 	"folke/persistence.nvim",
-	event = "BufReadPre",
+	keys = {
+		{
+			"<leader>ss",
+			"<cmd>lua require('persistence').load()<cr>",
+		},
+	},
 	opts = {},
 }
