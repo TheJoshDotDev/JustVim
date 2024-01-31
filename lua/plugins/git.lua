@@ -2,6 +2,10 @@ return {
 	{
 		"tpope/vim-fugitive",
 		priority = 1000,
+		cond = function()
+			local output = vim.fn.systemlist("git rev-parse --is-inside-work-tree 2>/dev/null")
+			return #output ~= 0
+		end,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
