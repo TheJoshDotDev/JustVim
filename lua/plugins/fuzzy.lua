@@ -7,6 +7,10 @@ return {
 			"<cmd>Telescope find_files<cr>",
 		},
 		{
+			"<leader>fd",
+			"<cmd>Telescope diagnostics <cr>",
+		},
+		{
 			"<leader>rr",
 			"<cmd>Telescope oldfiles <cr>",
 		},
@@ -43,6 +47,8 @@ return {
 		if not telescope_builtins_ok then
 			vim.notify("Telescope builtins not found", vim.log.levels.ERROR)
 		end
+
+		-- add icons to telescope
 
 		telescope.setup({
 			defaults = {
