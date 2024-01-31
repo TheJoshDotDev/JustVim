@@ -1,5 +1,8 @@
 return {
-	{ "tpope/vim-fugitive" },
+	{
+		"tpope/vim-fugitive",
+		priority = 1000,
+	},
 	{
 		"lewis6991/gitsigns.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },

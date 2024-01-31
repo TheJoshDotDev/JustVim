@@ -54,8 +54,9 @@ keymap.set("n", "<leader>lh", "<cmd>Lazy health<cr>")
 keymap.set("n", "<leader>ll", "<cmd>Lazy update<cr>")
 keymap.set("n", "<leader>lc", "<cmd>Lazy clean<cr>")
 
--- git
-keymap.set("n", "<leader>gg", "<cmd>G<cr>")
+-- Git
+keymap.set("n", "<leader>gg", "<cmd>Git<cr>")
+keymap.set("n", "<leader>gl", "<cmd>Git log<cr>")
 
 -- persistence
 keymap.set("n", "<leader>ss", "<cmd>lua require('persistence').load()<cr>")
