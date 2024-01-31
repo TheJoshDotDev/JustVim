@@ -1,6 +1,24 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
+	keys = {
+		{
+			"<leader>ff",
+			"<cmd>Telescope find_files<cr>",
+		},
+		{
+			"<leader>rr",
+			"<cmd>Telescope oldfiles <cr>",
+		},
+		{
+			"<leader>fg",
+			"<cmd>Telescope live_grep<cr>",
+		},
+		{
+			"<leader>sh",
+			"<cmd>Telescope help_tags<cr>",
+		},
+	},
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
 		{ "ahmedkhalf/project.nvim" },
@@ -51,11 +69,7 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>fg", telescope_builtins.live_grep)
-		vim.keymap.set("n", "<leader>ff", telescope_builtins.find_files)
-
 		-- files
-		vim.keymap.set("n", "<leader>rr", telescope_builtins.oldfiles)
 		vim.keymap.set("n", "<leader>fb", telescope_builtins.buffers)
 		vim.keymap.set("n", "<leader>sg", telescope_builtins.grep_string)
 		vim.keymap.set("n", "<leader>sb", telescope_builtins.current_buffer_fuzzy_find)
@@ -67,9 +81,6 @@ return {
 		end)
 		vim.keymap.set("n", "<leader>gi", telescope_builtins.lsp_implementations)
 		vim.keymap.set("n", "<leader>gt", telescope_builtins.lsp_type_definitions)
-
-		-- help
-		vim.keymap.set("n", "<leader>sh", telescope_builtins.help_tags)
 
 		-- git
 		vim.keymap.set("n", "<leader>gb", telescope_builtins.git_branches)
