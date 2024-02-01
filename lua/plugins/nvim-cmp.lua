@@ -77,6 +77,10 @@ return {
 		require("luasnip").filetype_extend("typescriptreact", { "html" })
 
 		require("luasnip.loaders.from_vscode").lazy_load({
+			paths = { "./custom-snips/joshSnips" },
+		})
+
+		require("luasnip.loaders.from_vscode").lazy_load({
 			paths = { "~/.config/nvim/lua/plugins/custom-snips/angular" },
 		})
 
