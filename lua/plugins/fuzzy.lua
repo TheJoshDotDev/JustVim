@@ -22,6 +22,10 @@ return {
 			"<leader>sh",
 			"<cmd>Telescope help_tags<cr>",
 		},
+		{
+			"<leader>to",
+			"<cmd>TodoTelescope keywords=RMR<cr>",
+		},
 	},
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
@@ -30,6 +34,7 @@ return {
 		{ "benfowler/telescope-luasnip.nvim" },
 		{ "nvim-telescope/telescope-ui-select.nvim" },
 		{ "folke/noice.nvim" },
+		{ "nvim-tree/nvim-web-devicons" },
 	},
 
 	config = function()
