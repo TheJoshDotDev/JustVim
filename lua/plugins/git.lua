@@ -1,11 +1,19 @@
 return {
 	{
-		"tpope/vim-fugitive",
-		priority = 1000,
+		"kdheepak/lazygit.nvim",
+		keys = {
+			{
+				"<leader>gg",
+				"<cmd>LazyGit<cr>",
+			},
+		},
 		cond = function()
 			local output = vim.fn.systemlist("git rev-parse --is-inside-work-tree 2>/dev/null")
 			return #output ~= 0
 		end,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
 	},
 	{
 		"lewis6991/gitsigns.nvim",
