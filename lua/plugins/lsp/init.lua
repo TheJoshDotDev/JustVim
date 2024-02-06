@@ -92,7 +92,6 @@ return {
 			},
 
 			on_attach = function(current_client, bufnr)
-				autocmds.organizeTypescriptImports()
 				autocmds.formatOnSave(current_client, bufnr)
 			end,
 		})
