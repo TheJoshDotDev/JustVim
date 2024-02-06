@@ -67,11 +67,11 @@ keymap.set("n", "<leader>kt", function()
 	end
 end)
 
-keymap.set("t", "jj", "<C-\\><C-N>")
-keymap.set("t", "<C-h>", "<C-\\><C-N><C-w>h")
-keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l")
-keymap.set("t", "<C-k>", "<C-\\><C-N><C-w>k")
-keymap.set("t", "<C-j>", "<C-\\><C-N><C-w>j")
+-- keymap.set("t", "jj", "<C-\\><C-N>")
+-- keymap.set("t", "<C-h>", "<C-\\><C-N><C-w>h")
+-- keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l")
+-- keymap.set("t", "<C-k>", "<C-\\><C-N><C-w>k")
+-- keymap.set("t", "<C-j>", "<C-\\><C-N><C-w>j")
 
 -- buffers
 keymap.set("n", "<leader>q", "<cmd>bd!<cr>")
