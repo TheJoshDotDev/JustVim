@@ -12,6 +12,8 @@ return {
 
 		blankline.setup({
 			indent = {
+				char = "│",
+				tab_char = "│",
 				highlight = {
 					"Blankline",
 				},
