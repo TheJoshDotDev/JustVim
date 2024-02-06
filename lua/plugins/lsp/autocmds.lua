@@ -19,12 +19,4 @@ function G.formatOnSave(current_client, bufnr)
 	end
 end
 
-function G.organizeTypescriptImports()
-	vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-		group = augroup,
-		pattern = { "*.ts*" },
-		command = ":TSToolsFixAll",
-	})
-end
-
 return G
