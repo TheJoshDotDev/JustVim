@@ -1,40 +1,11 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	lazy = false,
 	branch = "0.1.x",
-	keys = {
-		{
-			"<leader>ff",
-			"<cmd>Telescope find_files<cr>",
-		},
-		{
-			"<leader>fd",
-			"<cmd>Telescope diagnostics <cr>",
-		},
-		{
-			"<leader>rr",
-			"<cmd>Telescope oldfiles <cr>",
-		},
-		{
-			"<leader>fg",
-			"<cmd>Telescope live_grep<cr>",
-		},
-		{
-			"<leader>sh",
-			"<cmd>Telescope help_tags<cr>",
-		},
-		{
-			"<leader>to",
-			"<cmd>TodoTelescope keywords=RMR<cr>",
-		},
-	},
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
-		{ "ahmedkhalf/project.nvim" },
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		{ "benfowler/telescope-luasnip.nvim" },
-		{ "nvim-telescope/telescope-ui-select.nvim" },
 		{ "folke/noice.nvim" },
-		{ "nvim-tree/nvim-web-devicons" },
 	},
 
 	config = function()
@@ -57,11 +28,13 @@ return {
 
 		telescope.setup({
 			defaults = {
-				prompt_prefix = "🔭 ",
 				selection_caret = " ",
-				layout_strategy = "horizontal",
+				layout_strategy = "vertical",
 				sorting_strategy = "ascending",
+				preview = false,
 				layout_config = {
+					height = 0.6,
+					width = 0.5,
 					prompt_position = "top",
 				},
 				mappings = {
@@ -79,6 +52,11 @@ return {
 				},
 			},
 		})
+
+		vim.keymap.set("n", "<leader>ff", telescope_builtins.find_files)
+		vim.keymap.set("n", "<leader>rr", telescope_builtins.oldfiles)
+		vim.keymap.set("n", "<leader>fg", telescope_builtins.live_grep)
+		vim.keymap.set("n", "<leader>sh", telescope_builtins.help_tags)
 
 		-- files
 		vim.keymap.set("n", "<leader>fb", telescope_builtins.buffers)
@@ -98,7 +76,6 @@ return {
 		vim.keymap.set("n", "<leader>gc", telescope_builtins.git_commits)
 		vim.keymap.set("n", "<leader>gs", telescope_builtins.git_status)
 
-		telescope.load_extension("ui-select")
 		telescope.load_extension("fzf")
 	end,
 }
