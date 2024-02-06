@@ -23,7 +23,7 @@ function G.organizeTypescriptImports()
 	vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 		group = augroup,
 		pattern = { "*.ts*" },
-		command = ":TSToolsOrganizeImports sync",
+		command = ":TSToolsFixAll",
 	})
 end
 

@@ -98,11 +98,7 @@ return {
 		vim.keymap.set("n", "<leader>gc", telescope_builtins.git_commits)
 		vim.keymap.set("n", "<leader>gs", telescope_builtins.git_status)
 
-		vim.keymap.set("n", "<leader>sn", telescope.extensions.luasnip.luasnip)
-
-		telescope.load_extension("noice")
-		telescope.load_extension("fzf")
 		telescope.load_extension("ui-select")
-		telescope.load_extension("luasnip")
+		telescope.load_extension("fzf")
 	end,
 }

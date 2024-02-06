@@ -49,6 +49,7 @@ return {
 				"cssls",
 				"html",
 				"tailwindcss",
+				"tsserver",
 			},
 			handlers = {
 				function(server_name)

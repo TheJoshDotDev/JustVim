@@ -69,7 +69,7 @@ local function get_mode_segment()
 
 	vim.api.nvim_set_hl(0, "StatusLineMode", highlight[current_mode] or { bg = "#ffffff" })
 
-	return "%#StatusLineMode# 󰀵 " .. modes[current_mode] .. " "
+	return "%#StatusLineMode# 󰀵 " .. (modes[current_mode] or " ") .. " "
 end
 
 local function get_source_icon()
