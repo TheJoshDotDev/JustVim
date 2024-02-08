@@ -3,7 +3,7 @@ return {
 	event = "BufReadPre",
 	keys = {
 		{
-			"<leader>qs",
+			"<leader>ls",
 			'<cmd>lua require("persistence").load()<cr>',
 		},
 	},

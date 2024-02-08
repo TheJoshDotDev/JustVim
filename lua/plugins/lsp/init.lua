@@ -90,11 +90,9 @@ return {
 					end,
 				}),
 			},
-
-			on_attach = function(current_client, bufnr)
-				autocmds.formatOnSave(current_client, bufnr)
-			end,
 		})
+
+		require("lua.plugins.lsp.keymaps")
 
 		vim.diagnostic.config({
 			virtual_text = true,

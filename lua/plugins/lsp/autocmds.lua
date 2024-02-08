@@ -1,22 +1,19 @@
-local G = {}
+local lspGroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local autocmd = vim.api.nvim_create_autocmd
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-function G.formatOnSave(current_client, bufnr)
-	if current_client.supports_method("textDocument/formatting") then
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = augroup,
-			buffer = bufnr,
-			callback = function()
-				vim.lsp.buf.format({
-					filter = function(client)
-						return client.name == "null-ls"
-					end,
-					bufnr = bufnr,
-				})
-			end,
-		})
-	end
-end
-
-return G
+autocmd("LspAttach", {
+	group = lspGroup,
+	callback = function()
+		vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", { desc = "Show hover" })
+		vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Go to definition" })
+		vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", { desc = "Go to implementation" })
+		vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", { desc = "Go to type definition" })
+		vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", { desc = "Go to references" })
+		vim.keymap.set("n", "sh", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { desc = "Show signature help" })
+		vim.keymap.set("n", "rr", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename" })
+		vim.keymap.set("n", "ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code action" })
+		vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Show diagnostics" })
+		vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", { desc = "Previous diagnostic" })
+		vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", { desc = "Next diagnostic" })
+	end,
+})

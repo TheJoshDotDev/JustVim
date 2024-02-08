@@ -5,6 +5,12 @@ return {
 			local output = vim.fn.systemlist("git rev-parse --is-inside-work-tree 2>/dev/null")
 			return #output ~= 0
 		end,
+		keys = {
+			{
+				"<leader>gg",
+				"<cmd>vertical Git<cr>",
+			},
+		},
 		opt = {},
 	},
 	{

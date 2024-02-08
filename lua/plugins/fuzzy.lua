@@ -7,7 +7,6 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{ "folke/noice.nvim" },
 	},
-
 	config = function()
 		local telescope_ok, telescope = pcall(require, "telescope")
 		if not telescope_ok then
@@ -23,8 +22,6 @@ return {
 		if not telescope_builtins_ok then
 			vim.notify("Telescope builtins not found", vim.log.levels.ERROR)
 		end
-
-		-- add icons to telescope
 
 		telescope.setup({
 			defaults = {
@@ -53,28 +50,112 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>ff", telescope_builtins.find_files)
-		vim.keymap.set("n", "<leader>rr", telescope_builtins.oldfiles)
-		vim.keymap.set("n", "<leader>fg", telescope_builtins.live_grep)
-		vim.keymap.set("n", "<leader>sh", telescope_builtins.help_tags)
+		vim.keymap.set(
+			"n",
+			"<leader>sf",
+			telescope_builtins.find_files,
+			{ noremap = true, silent = true, desc = "Find files" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>sr",
+			telescope_builtins.oldfiles,
+			{ noremap = true, silent = true, desc = "Open recent files" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>sg",
+			telescope_builtins.live_grep,
+			{ noremap = true, silent = true, desc = "Grep" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>ss",
+			telescope_builtins.grep_string,
+			{ noremap = true, silent = true, desc = "Grep string" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>sb",
+			telescope_builtins.current_buffer_fuzzy_find,
+			{ noremap = true, silent = true, desc = "Search current buffer" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>fb",
+			telescope_builtins.buffers,
+			{ noremap = true, silent = true, desc = "Find buffers" }
+		)
 
-		-- files
-		vim.keymap.set("n", "<leader>fb", telescope_builtins.buffers)
-		vim.keymap.set("n", "<leader>sg", telescope_builtins.grep_string)
-		vim.keymap.set("n", "<leader>sb", telescope_builtins.current_buffer_fuzzy_find)
-		vim.keymap.set("n", "<leader>so", telescope_builtins.lsp_document_symbols)
+		-- help
+		vim.keymap.set(
+			"n",
+			"<leader>hh",
+			telescope_builtins.help_tags,
+			{ noremap = true, silent = true, desc = "Help tags" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>km",
+			telescope_builtins.keymaps,
+			{ noremap = true, silent = true, desc = "Keymaps" }
+		)
 
-		vim.keymap.set("n", "<leader>gr", telescope_builtins.lsp_references)
-		vim.keymap.set("n", "<leader>gd", function()
+		-- lsp
+		vim.keymap.set("n", "<leader>so", function()
+			telescope_builtins.lsp_document_symbols({
+				symbols = {
+					"Class",
+					"Function",
+					"Method",
+					"Field",
+					"Constructor",
+					"Enum",
+					"Interface",
+					"Module",
+				},
+			})
+		end, { noremap = true, silent = true, desc = "Document symbols" })
+		vim.keymap.set(
+			"n",
+			"<leader>lr",
+			telescope_builtins.lsp_references,
+			{ noremap = true, silent = true, desc = "LSP References" }
+		)
+		vim.keymap.set("n", "<leader>ld", function()
 			telescope_builtins.lsp_definitions({ jump_type = "never" })
-		end)
-		vim.keymap.set("n", "<leader>gi", telescope_builtins.lsp_implementations)
-		vim.keymap.set("n", "<leader>gt", telescope_builtins.lsp_type_definitions)
+		end, { noremap = true, silent = true, desc = "LSP Definitions" })
+		vim.keymap.set(
+			"n",
+			"<leader>li",
+			telescope_builtins.lsp_implementations,
+			{ noremap = true, silent = true, desc = "LSP Implementations" }
+		)
 
 		-- git
-		vim.keymap.set("n", "<leader>gb", telescope_builtins.git_branches)
-		vim.keymap.set("n", "<leader>gc", telescope_builtins.git_commits)
-		vim.keymap.set("n", "<leader>gs", telescope_builtins.git_status)
+		vim.keymap.set(
+			"n",
+			"<leader>gb",
+			telescope_builtins.git_branches,
+			{ noremap = true, silent = true, desc = "Git branches" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>gc",
+			telescope_builtins.git_commits,
+			{ noremap = true, silent = true, desc = "Git commits" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>gs",
+			telescope_builtins.git_status,
+			{ noremap = true, silent = true, desc = "Git status" }
+		)
+
+		-- diagnostics
+		vim.keymap.set("n", "<leader>dd", function()
+			telescope_builtins.diagnostics({ bufnr = 0 })
+		end, { noremap = true, silent = true, desc = "Document diagnostics" })
 
 		telescope.load_extension("fzf")
 	end,
