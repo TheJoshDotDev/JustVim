@@ -40,3 +40,13 @@ keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
 
 -- buffers
 keymap.set("n", "<leader>q", "<cmd>bd!<cr>", { desc = "Delete buffer" })
+
+keymap.set("n", "<leader>gg", function()
+	local utils = require("lazy.util")
+	utils.float_term({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
+end, { desc = "Lazygit (root dir)" })
+
+keymap.set("n", "<leader>lf", function()
+	local utils = require("lazy.util")
+	utils.float_term({ "lf" }, {})
+end, { desc = "Lazygit (root dir)" })

@@ -34,8 +34,9 @@ return {
 			vim.notify("Null LS not found", vim.log.levels.ERROR)
 		end
 
-		local autocmds = require("plugins.lsp.autocmds")
 		local servers = require("plugins.lsp.servers")
+		local autocmd = vim.api.nvim_create_autocmd
+		local keymap = vim.keymap
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 		local lsp = vim.lsp
@@ -90,9 +91,61 @@ return {
 					end,
 				}),
 			},
+			on_attach = function(_, bufnr)
+				vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+					command = "w",
+					buffer = bufnr,
+					nested = true,
+				})
+			end,
 		})
 
-		require("lua.plugins.lsp.keymaps")
+		keymap.set("n", "<leader>fo", function()
+			local clients = vim.lsp.get_active_clients()
+
+			local current_client = clients[1]
+
+			if current_client.supports_method("textDocument/formatting") then
+				vim.lsp.buf.format({
+					async = true,
+					filter = function(client)
+						return client.name == "null-ls"
+					end,
+					bufnr = 0,
+				})
+				vim.cmd("wa")
+			else
+				vim.notify("The current client does not support formatting")
+			end
+		end, { desc = "Formats the current buffer" })
+
+		local lspGroup = vim.api.nvim_create_augroup("LspFormatting", {})
+		autocmd("LspAttach", {
+			group = lspGroup,
+			callback = function()
+				vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", { desc = "Show hover" })
+				vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Go to definition" })
+				vim.keymap.set(
+					"n",
+					"gi",
+					"<cmd>lua vim.lsp.buf.implementation()<cr>",
+					{ desc = "Go to implementation" }
+				)
+				vim.keymap.set(
+					"n",
+					"go",
+					"<cmd>lua vim.lsp.buf.type_definition()<cr>",
+					{ desc = "Go to type definition" }
+				)
+				vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", { desc = "Go to references" })
+				vim.keymap.set("n", "sh", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { desc = "Show signature help" })
+				vim.keymap.set("n", "rr", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename" })
+				vim.keymap.set("n", "ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code action" })
+				vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Show diagnostics" })
+				vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", { desc = "Previous diagnostic" })
+				vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", { desc = "Next diagnostic" })
+			end,
+		})
 
 		vim.diagnostic.config({
 			virtual_text = true,

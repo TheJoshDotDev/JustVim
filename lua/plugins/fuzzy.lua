@@ -5,7 +5,7 @@ return {
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		{ "folke/noice.nvim" },
+		{ "smartpde/telescope-recent-files" },
 	},
 	config = function()
 		local telescope_ok, telescope = pcall(require, "telescope")
@@ -47,21 +47,21 @@ return {
 				["ui-select"] = {
 					telescope_themes.get_dropdown({}),
 				},
+				recent_files = {
+					only_cwd = true,
+				},
 			},
 		})
 
 		vim.keymap.set(
 			"n",
-			"<leader>sf",
+			"<leader>ff",
 			telescope_builtins.find_files,
 			{ noremap = true, silent = true, desc = "Find files" }
 		)
-		vim.keymap.set(
-			"n",
-			"<leader>sr",
-			telescope_builtins.oldfiles,
-			{ noremap = true, silent = true, desc = "Open recent files" }
-		)
+		vim.keymap.set("n", "<leader>sr", function()
+			telescope.extensions.recent_files.pick()
+		end, { noremap = true, silent = true, desc = "Open recent files" })
 		vim.keymap.set(
 			"n",
 			"<leader>sg",
@@ -90,7 +90,7 @@ return {
 		-- help
 		vim.keymap.set(
 			"n",
-			"<leader>hh",
+			"<leader>sh",
 			telescope_builtins.help_tags,
 			{ noremap = true, silent = true, desc = "Help tags" }
 		)
@@ -102,6 +102,7 @@ return {
 		)
 
 		-- lsp
+		-- use dropdown
 		vim.keymap.set("n", "<leader>so", function()
 			telescope_builtins.lsp_document_symbols({
 				symbols = {
@@ -116,47 +117,44 @@ return {
 				},
 			})
 		end, { noremap = true, silent = true, desc = "Document symbols" })
-		vim.keymap.set(
-			"n",
-			"<leader>lr",
-			telescope_builtins.lsp_references,
-			{ noremap = true, silent = true, desc = "LSP References" }
-		)
+		vim.keymap.set("n", "<leader>lr", function()
+			telescope_builtins.lsp_references(require("telescope.themes").get_dropdown({}))
+		end, { noremap = true, silent = true, desc = "LSP References" })
 		vim.keymap.set("n", "<leader>ld", function()
 			telescope_builtins.lsp_definitions({ jump_type = "never" })
 		end, { noremap = true, silent = true, desc = "LSP Definitions" })
-		vim.keymap.set(
-			"n",
-			"<leader>li",
-			telescope_builtins.lsp_implementations,
-			{ noremap = true, silent = true, desc = "LSP Implementations" }
-		)
+
+		vim.keymap.set("n", "<leader>li", function()
+			telescope_builtins.lsp_implementations(require("telescope.themes").get_dropdown({}))
+		end, { noremap = true, silent = true, desc = "LSP Implementations" })
 
 		-- git
-		vim.keymap.set(
-			"n",
-			"<leader>gb",
-			telescope_builtins.git_branches,
-			{ noremap = true, silent = true, desc = "Git branches" }
-		)
+		vim.keymap.set("n", "<leader>gb", function()
+			telescope_builtins.git_branches(require("telescope.themes").get_dropdown({}))
+		end, { noremap = true, silent = true, desc = "Git branches" })
 		vim.keymap.set(
 			"n",
 			"<leader>gc",
 			telescope_builtins.git_commits,
 			{ noremap = true, silent = true, desc = "Git commits" }
 		)
-		vim.keymap.set(
-			"n",
-			"<leader>gs",
-			telescope_builtins.git_status,
-			{ noremap = true, silent = true, desc = "Git status" }
-		)
+		vim.keymap.set("n", "<leader>gs", function()
+			telescope_builtins.git_status(require("telescope.themes").get_dropdown({}))
+		end, { noremap = true, silent = true, desc = "Git status" })
 
 		-- diagnostics
 		vim.keymap.set("n", "<leader>dd", function()
 			telescope_builtins.diagnostics({ bufnr = 0 })
 		end, { noremap = true, silent = true, desc = "Document diagnostics" })
 
+		vim.keymap.set(
+			"n",
+			"<leader>dD",
+			telescope_builtins.diagnostics,
+			{ noremap = true, silent = true, desc = "Document diagnostics" }
+		)
+
+		telescope.load_extension("recent_files")
 		telescope.load_extension("fzf")
 	end,
 }

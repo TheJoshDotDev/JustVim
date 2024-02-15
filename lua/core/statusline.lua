@@ -32,6 +32,7 @@ local pink = "#E8A2AF"
 local green = "#A6D189"
 
 vim.api.nvim_set_hl(0, "StatusLineSeparator", { bg = base3 })
+vim.api.nvim_set_hl(0, "StatusLineWorkspace", { bg = base2 })
 vim.api.nvim_set_hl(0, "StatusLineBase", { bg = base1 })
 
 local separator = "%#StatusLineSeparator# "
@@ -107,7 +108,6 @@ local function get_workspace()
 	local cwd = vim.fn.system("pwd")
 	local project_folder = string.match(cwd, ".*/(.*)")
 
-	vim.api.nvim_set_hl(0, "StatusLineWorkspace", { bg = base2 })
 	return "%#StatusLineWorkspace# 󰝰 " .. string.gsub(project_folder, "%c", "") .. " "
 end
 

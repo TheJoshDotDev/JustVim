@@ -5,7 +5,7 @@ return {
 	config = function()
 		require("catppuccin").setup({
 			flavour = "macchiato",
-			transparent_background = true,
+			transparent_background = false,
 			term_colors = true,
 			integrations = {
 				telescope = true,
@@ -36,7 +36,7 @@ return {
 					StatusLine = { bg = colors.mantle, fg = colors.rose },
 
 					WinBar = { bg = colors.none, fg = colors.teal },
-					WinBarNC = { bg = colors.none, fg = colors.crust },
+					WinBarNC = { bg = colors.none, fg = colors.rose },
 
 					FloatBorder = { fg = colors.teal },
 					IblScope = { fg = colors.pink },
