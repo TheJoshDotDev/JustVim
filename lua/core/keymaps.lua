@@ -54,24 +54,3 @@ keymap.set("n", "<leader>lh", "<cmd>Lazy health<cr>")
 keymap.set("n", "<leader>ll", "<cmd>Lazy update<cr>")
 keymap.set("n", "<leader>lc", "<cmd>Lazy clean<cr>")
 
--- Git
-keymap.set("n", "<leader>gg", "<cmd>vertical Git<cr>")
-
--- terminal
-keymap.set("n", "<leader>tt", "<cmd>vsplit term://zsh<cr>")
-keymap.set("n", "<leader>kt", function()
-	for _, buf in ipairs(vim.fn.range(1, vim.fn.bufnr("$"))) do
-		if vim.fn.getbufvar(buf, "&buftype") == "terminal" then
-			vim.cmd("bdelete! " .. buf)
-		end
-	end
-end)
-
-keymap.set("t", "jj", "<C-\\><C-N>")
-keymap.set("t", "<C-h>", "<C-\\><C-N><C-w>h")
-keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l")
-keymap.set("t", "<C-k>", "<C-\\><C-N><C-w>k")
-keymap.set("t", "<C-j>", "<C-\\><C-N><C-w>j")
-
--- buffers
-keymap.set("n", "<leader>q", "<cmd>bd!<cr>")

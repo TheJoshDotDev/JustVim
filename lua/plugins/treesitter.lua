@@ -12,10 +12,7 @@ return {
 		end
 		treesitter.setup({
 			ensure_installed = {
-				"javascript",
-				"typescript",
 				"bash",
-				"html",
 				"json",
 				"lua",
 				"luadoc",
@@ -23,12 +20,8 @@ return {
 				"markdown",
 				"markdown_inline",
 				"regex",
-				"typescript",
 				"yaml",
 				"jsdoc",
-				"go",
-				"dart",
-				"tsx",
 			},
 
 			sync_install = false,
