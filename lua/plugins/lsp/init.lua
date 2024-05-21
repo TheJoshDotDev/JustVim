@@ -69,6 +69,7 @@ return {
 
 		mason_null_ls.setup({
 			ensure_installed = {
+				"stylua",
 				"prettier",
 				"gofumpt",
 				"goimports-reviser",
@@ -90,6 +91,7 @@ return {
 				formatting.gofumpt,
 				formatting.goimports_reviser,
 				formatting.golines,
+				formatting.stylua
 			},
 		})
 
