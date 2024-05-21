@@ -22,6 +22,11 @@ return {
 			vim.notify("Mason LSP Config not found", vim.log.levels.ERROR)
 		end
 
+		local mason_null_ls_ok, mason_null_ls = pcall(require, "mason-null-ls")
+		if not mason_null_ls_ok then
+			vim.notify("Mason Null Ls not found", vim.log.levels.ERROR)
+		end
+
 		local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
 		if not cmp_nvim_lsp_status then
@@ -35,117 +40,60 @@ return {
 		end
 
 		local servers = require("plugins.lsp.servers")
-		local autocmd = vim.api.nvim_create_autocmd
-		local keymap = vim.keymap
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
-		local lsp = vim.lsp
 
 		mason.setup()
 		mason_lspconfig.setup({
 			ensure_installed = {
-				"lua_ls",
-				"angularls",
-				"gopls",
-				"cssls",
-				"html",
-				"tailwindcss",
-				"tsserver",
-			},
-			handlers = {
-				function(server_name)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-					})
-				end,
-				["tailwindcss"] = servers.setupTwindLs,
-				["lua_ls"] = servers.setupLuaLs,
+				"lua_ls", -- LUA
+				"angularls", -- ANGULAR
+				"gopls", -- GO
+				"cssls", -- CSS
+				"html", -- HTML
+				"tailwindcss", -- TWIND
+				"eslint", -- ESLINT
+				"tsserver", -- TYPESCRIPT
 			},
 		})
+		mason_lspconfig.setup_handlers({
+			function(server_name) -- default handler (optional)
+				require("lspconfig")[server_name].setup({
+					capabilities = capabilities,
+				})
+			end,
+			["tailwindcss"] = servers.TwindLs(capabilities),
+			["lua_ls"] = servers.LuaLs(capabilities),
+		})
+		servers.DartLs(capabilities)
 
-		servers.setupDartLs(capabilities)
-
-		require("mason-null-ls").setup({
+		mason_null_ls.setup({
 			ensure_installed = {
-				"stylua",
-				"eslint_d",
-				"prettierd",
+				"prettier",
+				"gofumpt",
+				"goimports-reviser",
+				"golines",
 			},
+
 			automatic_installation = false,
+			hanlders = {},
 		})
 
 		local formatting = null_ls.builtins.formatting
-		local diagnostics = null_ls.builtins.diagnostics
-
 		null_ls.setup({
 			sources = {
-				formatting.prettierd.with({
+				formatting.prettier.with({
 					condition = function(utls)
 						return utls.root_has_file({ ".prettierrc.json", ".prettierrc" })
 					end,
 				}),
-				formatting.stylua,
-				diagnostics.eslint_d.with({
-					condition = function(utls)
-						return utls.root_has_file({ ".eslintrc.js", ".eslintrc.json", ".eslintrc.cjs" })
-					end,
-				}),
+				formatting.gofumpt,
+				formatting.goimports_reviser,
+				formatting.golines,
 			},
-			on_attach = function(_, bufnr)
-				vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-					command = "w",
-					buffer = bufnr,
-					nested = true,
-				})
-			end,
 		})
 
-		keymap.set("n", "<leader>fo", function()
-			local clients = vim.lsp.get_active_clients()
-
-			local current_client = clients[1]
-
-			if current_client.supports_method("textDocument/formatting") then
-				vim.lsp.buf.format({
-					async = true,
-					filter = function(client)
-						return client.name == "null-ls"
-					end,
-					bufnr = 0,
-				})
-				vim.cmd("wa")
-			else
-				vim.notify("The current client does not support formatting")
-			end
-		end, { desc = "Formats the current buffer" })
-
-		local lspGroup = vim.api.nvim_create_augroup("LspFormatting", {})
-		autocmd("LspAttach", {
-			group = lspGroup,
-			callback = function()
-				vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", { desc = "Show hover" })
-				vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Go to definition" })
-				vim.keymap.set(
-					"n",
-					"gi",
-					"<cmd>lua vim.lsp.buf.implementation()<cr>",
-					{ desc = "Go to implementation" }
-				)
-				vim.keymap.set(
-					"n",
-					"go",
-					"<cmd>lua vim.lsp.buf.type_definition()<cr>",
-					{ desc = "Go to type definition" }
-				)
-				vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", { desc = "Go to references" })
-				vim.keymap.set("n", "sh", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { desc = "Show signature help" })
-				vim.keymap.set("n", "rr", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename" })
-				vim.keymap.set("n", "ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code action" })
-				vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Show diagnostics" })
-				vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", { desc = "Previous diagnostic" })
-				vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", { desc = "Next diagnostic" })
-			end,
-		})
+		require("plugins.lsp.autocmd")
 
 		vim.diagnostic.config({
 			virtual_text = true,
@@ -154,15 +102,15 @@ return {
 			},
 		})
 
-		lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
+		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 			border = "rounded",
 		})
-		lsp.handlers["textDocument/signatureHelp"] = lsp.with(vim.lsp.handlers.signatureHelp, {
+		vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signatureHelp, {
 			border = "rounded",
 		})
 
-		local lsp_window_ui_state, lsp_window_ui = pcall(require, "lspconfig.ui.windows")
-		if lsp_window_ui_state then
+		local lsp_window_ui_ok, lsp_window_ui = pcall(require, "lspconfig.ui.windows")
+		if lsp_window_ui_ok then
 			lsp_window_ui.default_options.border = "rounded"
 		end
 	end,
