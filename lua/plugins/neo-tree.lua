@@ -7,7 +7,7 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	keys = {
-		{ "<leader>e", "<cmd>Neotree<cr>", desc = "LazyGit" },
+		{ "<leader>e", "<cmd>Neotree reveal<cr>", desc = "LazyGit" },
 	},
 	config = function()
 		local ok, neo_tree = pcall(require, "neo-tree")
@@ -16,11 +16,18 @@ return {
 		end
 
 		neo_tree.setup({
+			filesystem = {
+				follow_current_file = {
+					enabled = true, -- This will find and focus the file in the active buffer every time
+				},
+				hijack_netrw_behavior = "open_default",
+				use_libuv_file_watcher = true,
+			},
 			window = {
 				mappings = {
 					["<space>"] = {
 						"toggle_node",
-						nowait = true, 
+						nowait = true,
 					},
 				},
 			},
