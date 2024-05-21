@@ -1,21 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
-local statusline = require("core.statusline")
-
 local joshDotDev = augroup("JoshDotDev", {})
-
-vim.api.nvim_create_autocmd({
-	"WinEnter",
-	"BufEnter",
-	"VimResized",
-	"WinEnter",
-	"ModeChanged",
-}, {
-	callback = function()
-		vim.opt.statusline = statusline.refresh()
-	end,
-})
 
 autocmd("TextYankPost", {
 	group = joshDotDev,

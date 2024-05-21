@@ -1,18 +1,4 @@
 return {
-	-- {
-	-- 	"tpope/vim-fugitive",
-	-- 	cond = function()
-	-- 		local output = vim.fn.systemlist("git rev-parse --is-inside-work-tree 2>/dev/null")
-	-- 		return #output ~= 0
-	-- 	end,
-	-- 	keys = {
-	-- 		{
-	-- 			"<leader>gg",
-	-- 			"<cmd>vertical Git<cr>",
-	-- 		},
-	-- 	},
-	-- 	opt = {},
-	-- },
 	{
 		"lewis6991/gitsigns.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },

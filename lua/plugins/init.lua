@@ -17,18 +17,6 @@ return {
 		opts = {},
 	},
 	{
-		"github/copilot.vim",
-		keys = {
-			{
-				"<leader>cp",
-				function()
-					vim.cmd("Copilot enable")
-				end,
-			},
-		},
-		lazy = true,
-	},
-	{
 		"christoomey/vim-tmux-navigator",
 	},
 }
