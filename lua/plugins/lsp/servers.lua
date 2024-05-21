@@ -6,8 +6,9 @@ if not lspconfig_ok then
 end
 local util = lspconfig.util
 
-function G.setupLuaLs()
+function G.LuaLs(capabilities)
 	lspconfig.lua_ls.setup({
+		capabilities = capabilities,
 		settings = {
 			Lua = {
 				diagnostics = {
@@ -23,15 +24,16 @@ function G.setupLuaLs()
 	})
 end
 
-function G.setupDartLs(capabilities)
+function G.DartLs(capabilities)
 	lspconfig["dartls"].setup({
 		cmd = { "dart", "language-server", "--protocol=lsp" },
 		capabilities = capabilities,
 	})
 end
 
-function G.setupTwindLs()
+function G.TwindLs(capabilities)
 	lspconfig.tailwindcss.setup({
+		capabilities = capabilities,
 		single_file_support = false,
 		root_dir = util.root_pattern("tailwind.*"),
 	})
