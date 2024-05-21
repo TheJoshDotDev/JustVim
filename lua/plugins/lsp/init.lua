@@ -3,11 +3,7 @@ return {
 	dependencies = {
 		{ "williamboman/mason.nvim" },
 		{ "williamboman/mason-lspconfig.nvim" },
-
 		{ "hrsh7th/cmp-nvim-lsp" },
-
-		{ "jay-babu/mason-null-ls.nvim" },
-		{ "nvimtools/none-ls.nvim" },
 	},
 	config = function()
 		local mason_status, mason = pcall(require, "mason")
@@ -22,21 +18,10 @@ return {
 			vim.notify("Mason LSP Config not found", vim.log.levels.ERROR)
 		end
 
-		local mason_null_ls_ok, mason_null_ls = pcall(require, "mason-null-ls")
-		if not mason_null_ls_ok then
-			vim.notify("Mason Null Ls not found", vim.log.levels.ERROR)
-		end
-
 		local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
 		if not cmp_nvim_lsp_status then
 			vim.notify("CMP Nvim LSP not found", vim.log.levels.ERROR)
-		end
-
-		local null_ls_status, null_ls = pcall(require, "null-ls")
-
-		if not null_ls_status then
-			vim.notify("Null LS not found", vim.log.levels.ERROR)
 		end
 
 		local servers = require("plugins.lsp.servers")
@@ -66,34 +51,6 @@ return {
 			["lua_ls"] = servers.LuaLs(capabilities),
 		})
 		servers.DartLs(capabilities)
-
-		mason_null_ls.setup({
-			ensure_installed = {
-				"stylua",
-				"prettier",
-				"gofumpt",
-				"goimports-reviser",
-				"golines",
-			},
-
-			automatic_installation = false,
-			hanlders = {},
-		})
-
-		local formatting = null_ls.builtins.formatting
-		null_ls.setup({
-			sources = {
-				formatting.prettier.with({
-					condition = function(utls)
-						return utls.root_has_file({ ".prettierrc.json", ".prettierrc" })
-					end,
-				}),
-				formatting.gofumpt,
-				formatting.goimports_reviser,
-				formatting.golines,
-				formatting.stylua
-			},
-		})
 
 		require("plugins.lsp.autocmd")
 

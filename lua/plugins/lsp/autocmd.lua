@@ -13,16 +13,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Show diagnostics" })
 		vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", { desc = "Previous diagnostic" })
 		vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", { desc = "Next diagnostic" })
-
-		vim.keymap.set("n", "<leader>fo", function()
-			vim.lsp.buf.format({
-				async = true,
-				bufnr = 0,
-				filter = function(client)
-					return client.name == "null-ls"
-				end,
-			})
-		end, { desc = "Formats the current buffer" })
 	end,
 })
-
