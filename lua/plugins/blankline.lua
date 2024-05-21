@@ -8,7 +8,7 @@ return {
 			vim.notify("Indent blankline not found", vim.log.levels.ERROR)
 		end
 
-		vim.api.nvim_set_hl(0, "Blankline", { fg = "#4C4F69" })
+		vim.api.nvim_set_hl(0, "Blankline", { fg = "#2f324a" })
 
 		blankline.setup({
 			indent = {
