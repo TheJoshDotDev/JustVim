@@ -7,7 +7,7 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	keys = {
-		{ "<leader>e", "<cmd>Neotree reveal<cr>", desc = "LazyGit" },
+		{ "<leader>e", "<cmd>Neotree position=float reveal=true<cr>", desc = "LazyGit" },
 	},
 	config = function()
 		local ok, neo_tree = pcall(require, "neo-tree")

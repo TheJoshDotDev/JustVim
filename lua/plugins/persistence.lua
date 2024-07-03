@@ -1,13 +1,5 @@
 return {
 	"folke/persistence.nvim",
-
-	keys = {
-		{
-			"<leader>ls",
-			'<cmd>lua require("persistence").load()<cr>',
-		},
-	},
-
 	config = function()
 		local keymap = vim.keymap
 
@@ -17,10 +9,6 @@ return {
 		end
 
 		persistence.setup()
-
-		keymap.set("n", "<leader>ls", function()
-			persistence.load({ last = true })
-		end)
 
 		keymap.set("n", "<leader>ls", function()
 			vim.notify("󰞶 Loading last session...", vim.log.levels.INFO)

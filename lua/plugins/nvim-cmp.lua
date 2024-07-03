@@ -30,7 +30,7 @@ return {
 				end,
 			},
 			performance = {
-				max_view_entries = 20,
+				max_view_entries = 50,
 			},
 			completion = {
 				completeopt = "menu,menuone,preview,noselect",

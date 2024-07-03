@@ -6,6 +6,7 @@ return {
 		require("catppuccin").setup({
 			flavour = "macchiato",
 			term_colors = true,
+			transparent_background = true,
 			integrations = {
 				telescope = true,
 				treesitter = true,
@@ -27,15 +28,9 @@ return {
 			},
 			custom_highlights = function(colors)
 				return {
-					CmpBorder = { fg = colors.surface2 },
+					CmpBorder = { fg = colors.surfac2 },
 					Pmenu = { bg = colors.none },
 					IncSearch = { bg = colors.none },
-
-					CursorLine = { bg = colors.mantle },
-					StatusLine = { bg = colors.mantle, fg = colors.rose },
-
-					WinBar = { bg = colors.none, fg = colors.teal },
-					WinBarNC = { bg = colors.none, fg = colors.rose },
 
 					FloatBorder = { fg = colors.teal },
 					IblScope = { fg = colors.pink },

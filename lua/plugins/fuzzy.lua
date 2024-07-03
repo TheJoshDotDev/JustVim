@@ -34,14 +34,15 @@ return {
 					width = 0.5,
 					prompt_position = "top",
 				},
-				mappings = {
-					n = {
-						["bd"] = require("telescope.actions").delete_buffer,
-					}, -- n
-					i = {
-						["bd"] = require("telescope.actions").delete_buffer,
-					},
-				},
+
+				-- mappings = {
+				-- 	n = {
+				-- 		["bd"] = require("telescope.actions").delete_buffer,
+				-- 	}, -- n
+				-- 	i = {
+				-- 		["bd"] = require("telescope.actions").delete_buffer,
+				-- 	},
+				-- },
 			},
 			extensions = {
 				["ui-select"] = {
@@ -105,6 +106,8 @@ return {
 		-- use dropdown
 		vim.keymap.set("n", "<leader>so", function()
 			telescope_builtins.lsp_document_symbols({
+				fname_width = 100,
+				show_line = true,
 				symbols = {
 					"Class",
 					"Function",
