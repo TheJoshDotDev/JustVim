@@ -7,13 +7,6 @@ return {
 			component_separators = "",
 		},
 		winbar = {
-			lualine_a = {
-				{
-					"filetype",
-					colored = false, -- Displays filetype icon in color if set to true
-					icon_only = true, -- Display only an icon for filetype
-				},
-			},
 			lualine_b = {
 				{
 					"filename",
